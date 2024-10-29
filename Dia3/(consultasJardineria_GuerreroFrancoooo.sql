@@ -123,6 +123,7 @@ INSERT INTO empleado VALUES (14,'Oscar','Palma','Aceituno','2519','opalma@jardin
 INSERT INTO empleado VALUES (15,'Francois','Fignon','','9981','ffignon@gardening.com','PAR-FR',3,'Director Oficina');
 INSERT INTO empleado VALUES (16,'Lionel','Narvaez','','9982','lnarvaez@gardening.com','PAR-FR',15,'Representante Ventas');
 INSERT INTO empleado VALUES (17,'Laurent','Serra','','9982','lserra@gardening.com','PAR-FR',15,'Representante Ventas');
+
 INSERT INTO empleado VALUES (18,'Michael','Bolton','','7454','mbolton@gardening.com','SFC-USA',3,'Director Oficina');
 INSERT INTO empleado VALUES (19,'Walter Santiago','Sanchez','Lopez','7454','wssanchez@gardening.com','SFC-USA',18,'Representante Ventas');
 INSERT INTO empleado VALUES (20,'Hilary','Washington','','7565','hwashington@gardening.com','BOS-USA',3,'Director Oficina');
@@ -139,10 +140,10 @@ INSERT INTO empleado VALUES (30,'Julian','Bellinelli','','3211','jbellinelli@gar
 INSERT INTO empleado VALUES (31,'Mariko','Kishi','','3211','mkishi@gardening.com','SYD-AU',29,'Representante Ventas');
 
 INSERT INTO gama_producto VALUES ('Herbaceas','Plantas para jardin decorativas',NULL,NULL);
-INSERT INTO gama_producto VALUES ('Herramientas','Herramientas para todo tipo de acción',NULL,NULL); -- helppppppppppp
+INSERT INTO gama_producto VALUES ('Herramientas','Herramientas para todo tipo de acción',NULL,NULL); 
 INSERT INTO gama_producto VALUES ('Aromáticas','Plantas aromáticas',NULL,NULL);
 INSERT INTO gama_producto VALUES ('Frutales','Árboles pequeños de producción frutal',NULL,NULL);
-INSERT INTO gama_producto VALUES ('Ornamentales','Plantas vistosas para la decoración del jardín',NULL,NULL); -- helppppppppp
+INSERT INTO gama_producto VALUES ('Ornamentales','Plantas vistosas para la decoración del jardín',NULL,NULL); 
 
 INSERT INTO cliente VALUES (1,'GoldFish Garden','Daniel G','GoldFish','5556901745','5556901746','False Street 52 2 A',NULL,'San Francisco',NULL,'USA','24006',19,3000);
 INSERT INTO cliente VALUES (3,'Gardening Associates','Anne','Wright','5557410345','5557410346','Wall-e Avenue',NULL,'Miami','Miami','USA','24010',19,6000);
@@ -939,47 +940,17 @@ select nombre_cliente from cliente where pais = 'Spain';
 select estado from pedido;
 -- 8
 Select codigo_cliente, YEAR('2008-12-17') As año_2008 From pedido;
--- 9 
+-- 9
 -- 10
 -- 11
-Select fecha_pedido, YEAR('2008-12-17') As año_2008 From pedido;
-
-
-CREATE TABLE pedido(
-	codigo_pedido INT PRIMARY KEY NOT NULL,
-    fecha_pedido DATE,
-    fecha_esperada DATE,
-    fecha_entrega DATE ,
-    estado VARCHAR(25) NOT NULL,
-    comentarios TEXT,
-    codigo_cliente INT NOT NULL,
-    FOREIGN KEY (codigo_cliente) REFERENCES cliente(codigo_cliente)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-CREATE TABLE cliente(
-	codigo_cliente INT PRIMARY KEY NOT NULL,
-    nombre_cliente VARCHAR(30) NOT NULL,
-    nombre_contacto VARCHAR(30) NOT NULL,
-    apellido_contacto VARCHAR(30) NOT NULL,
-    telefono VARCHAR(20) NOT NULL,
-    fax VARCHAR(20) NOT NULL,
-    linea_direccion1 VARCHAR(50) ,
-    linea_direccion2 VARCHAR(50),
-    ciudad VARCHAR(50),
-    region VARCHAR(50),
-    pais VARCHAR(50),
-    codigo_postal VARCHAR(20) NOT NULL,
-    codigo_empleado_rep_ventas INT(20) NOT NULL,
-    limite_credito DECIMAL(15.2)
+select fecha_pedido from pedido where year(fecha_pedido) = 2009;
+-- 12 
+select fecha_pedido from pedido where month(fecha_pedido ) = 01;
+-- 13
+select * from pago where forma_pago = 'PayPal' order by total DESC;
+-- 14
+select distinct forma_pago from pago;
+-- 15
+select nombre,gama,cantidad_en_stock from producto where gama = 'Ornamentales' and cantidad_en_stock > 100 order by cantidad_en_stock desc;
+-- 16
+select nombre_cliente,codigo_empleado_rep_ventas from cliente where ciudad = 'Madrid' and codigo_empleado_rep_ventas >=11 and codigo_empleado_rep_ventas <=30;
