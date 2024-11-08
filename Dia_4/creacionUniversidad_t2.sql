@@ -279,17 +279,43 @@ where ce.anyo_inicio = '2017' and ce.anyo_fin = '2018';
 
 -- 1. Devuelve el número total de alumnas que hay
 select  count(sexo) as Total_mujeres from alumno where sexo = 'M';
+
 -- 2. Calcula cuántos alumnos nacieron en 1999
 select count(*) as total_nacimieron_1999 from alumno where year(fecha_nacimiento) = 1999 ;
+
 -- 3. 
 select count(p.id_departamento), d.nombre from profesor p inner join departamento d on p.id_departamento = d.id group by 2 order by 1 desc;
--- 4.
-select d.nombre, count(p.id_departamento) from profesor p left join departamento d on p.id_departamento = d.id group by 1;
--- 5.
-select * from grado;
-select * from asignatura;
-select g.nombre, count(a.id) from asignatura a left join grado g on g.id = a.id group by 1; 
--- 6.
-select 
+
+-- 4. Devuelve un listado con todos los departamentos y el número de profesores que hay en cada uno de ellos. Tenga en cuenta que pueden existir departamentos 
+-- que no tienen profesores asociados. Estos departamentos también tienen que aparecer en el listado
 select * from departamento;
 select * from profesor;
+select d.nombre, count(p.id_departamento) as total_departamentos from departamento d
+left join profesor p on  p.id_departamento = d.id group by 1;
+
+-- 5.Devuelve un listado con el nombre de todos los grados existentes en la base de datos y el número de asignaturas que tiene cada uno.
+-- Tenga en cuenta que pueden existir grados que no tienen asignaturas asociadas. Estos grados también tienen que aparecer en el listado.
+-- El resultado deberá estar ordenado de mayor a menor por el número de asignaturas.
+select * from grado;
+select * from asignatura;
+select g.nombre, count(a.id_grado) as catidad_asignatura_grado from grado g left join asignatura a on a.id_grado = g.id group by 1 order by 2 desc; 
+
+-- 6. Devuelve un listado con el nombre de todos los grados existentes en la base de datos y el número de asignaturas que tiene cada uno,
+-- de los grados que tengan más de 40 asignaturas asociadas.
+select g.nombre, count(a.id) from grado g inner join asignatura a on g.id = a.id_grado group by 1 having count(a.id) > 40;
+
+-- 7. Devuelve un listado que muestre el nombre de los grados y la suma del número total de créditos que hay para cada tipo de asignatura.
+-- El resultado debe tener tres columnas: nombre del grado, tipo de asignatura y la suma de los créditos de todas las asignaturas que hay de ese tipo.
+-- Ordene el resultado de mayor a menor por el número total de crédidos.
+select g.nombre,a.tipo , sum(a.creditos) from grado g inner join asignatura a on g.id = a.id_grado group by 1, 2 order by 3 desc;
+
+-- 8 Devuelve un listado que muestre cuántos alumnos se han matriculado de alguna asignatura en cada uno de los cursos escolares.
+-- El resultado deberá mostrar dos columnas, una columna con el año de inicio del curso escolar y otra con el número de alumnos matriculados.
+select curso_escolar.anyo_inicio, count(distinct alumno_se_matricula_asignatura.id_alumno) from alumno inner join alumno_se_matricula_asignatura on alumno.id = alumno_se_matricula_asignatura.id_alumno inner join asignatura on asignatura.id = alumno_se_matricula_asignatura.id_asignatura inner join curso_escolar on curso_escolar.id = alumno_se_matricula_asignatura.id_curso_escolar group by curso_escolar.anyo_inicio;
+
+-- 9 Devuelve un listado con el número de asignaturas que imparte cada profesor. El listado debe tener en cuenta aquellos profesores que no imparten ninguna asignatura.
+-- El resultado mostrará cinco columnas: id, nombre, primer apellido, segundo apellido y número de asignaturas. El resultado estará ordenado de mayor a menor por el número de asignaturas. 
+select * from asignatura;
+select p.id, p.nombre, p.apellido1, p.apellido2, count(a.id_profesor) from asignatura a right join profesor p on a.id_profesor = p.id group by 1 order by 5 desc; 
+
+
