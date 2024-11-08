@@ -319,3 +319,38 @@ select * from asignatura;
 select p.id, p.nombre, p.apellido1, p.apellido2, count(a.id_profesor) from asignatura a right join profesor p on a.id_profesor = p.id group by 1 order by 5 desc; 
 
 
+
+
+-- actividad 2
+
+-- 1 Devuelve todos los datos del alumno más joven.
+select * from alumno order by fecha_nacimiento limit 1;
+
+-- 2 Devuelve un listado con los profesores que no están asociados a un departamento.
+select * from profesor;
+select p.id, p.nif, p.nombre, p.apellido1, p.apellido2, p.ciudad, p.direccion from profesor p inner join departamento d on p.id_departamento is null ;
+
+-- 3 Devuelve un listado con los departamentos que no tienen profesores asociados.
+select * from departamento d left join profesor p on p.id_departamento = d.id where p.id_departamento is null;
+
+-- 4 Devuelve un listado con los profesores que tienen un departamento asociado y que no imparten ninguna asignatura.
+
+select p.id, p.nombre, p.apellido1, p.apellido2 from  profesor p left join asignatura a on a.id_profesor = p.id where a.id_profesor is null;
+select * from profesor;
+-- 5 Devuelve un listado con las asignaturas que no tienen un profesor asignado.
+select * from asignatura;
+select  * from asignatura where id_profesor is null;   
+
+-- 6 Devuelve un listado con todos los departamentos que no han impartido asignaturas en ningún curso escolar
+
+
+-- 7 Devuelve un listado con el nombre de todos los departamentos que tienen profesores que imparten alguna asignatura en el Grado en Ingeniería Informática (Plan 2015).
+select * from departamento;
+select * from profesor;
+select * from asignatura;
+select * from grado;
+
+
+select d.id, d.nombre from departamento d inner join profesor p on d.id = p.id_departamento inner join asignatura a on a.id_grado =  4;
+
+-- 
