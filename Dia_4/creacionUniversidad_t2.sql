@@ -284,6 +284,12 @@ select count(*) as total_nacimieron_1999 from alumno where year(fecha_nacimiento
 -- 3. 
 select count(p.id_departamento), d.nombre from profesor p inner join departamento d on p.id_departamento = d.id group by 2 order by 1 desc;
 -- 4.
-
+select d.nombre, count(p.id_departamento) from profesor p left join departamento d on p.id_departamento = d.id group by 1;
+-- 5.
+select * from grado;
+select * from asignatura;
+select g.nombre, count(a.id) from asignatura a left join grado g on g.id = a.id group by 1; 
 -- 6.
+select 
 select * from departamento;
+select * from profesor;
