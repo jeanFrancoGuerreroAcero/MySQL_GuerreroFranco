@@ -416,3 +416,158 @@ select lower(concat(nombre,' ',apellido1,' ',coalesce(apellido2,''))) as nombre_
 -- aparecer en dos columnas, una mostrará únicamente los dígitos del nif y la
 -- otra la letra.
 select id, substring(nif,1,8), substring(nif,9,11) from empleado;
+
+-- 11. Lista el nombre de cada departamento y el valor del presupuesto actual del
+-- que dispone. Para calcular este dato tendrá que restar al valor del
+-- presupuesto inicial (columna presupuesto) los gastos que se han generado
+-- (columna gastos). Tenga en cuenta que en algunos casos pueden existir
+-- valores negativos. Utilice un alias apropiado para la nueva columna columna
+-- que está calculando.
+select * from departamento;
+
+delimiter //
+create function presupuesto(presupuesto int, gastos int)
+returns int
+deterministic
+begin
+	declare monto_disponible double;
+    set monto_disponible = presupuesto - gastos;
+    return monto_disponible;
+end //
+delimiter ;
+
+select nombre, presupuesto(presupuesto,gastos) as monto_disponible from departamento;
+
+-- 12. Lista el nombre de los departamentos y el valor del presupuesto actual
+-- ordenado de forma ascendente.
+select nombre, presupuesto(presupuesto,gastos) as monto_disponible from departamento order by 2 asc;
+
+-- 13.Lista el nombre de todos los departamentos ordenados de forma
+-- ascendente.
+select nombre from departamento order by 1 asc;
+
+-- 14. Lista el nombre de todos los departamentos ordenados de forma
+-- descendente.
+select nombre from departamento order by 1 desc;
+
+-- 15. Lista los apellidos y el nombre de todos los empleados, ordenados de forma
+-- alfabética tendiendo en cuenta en primer lugar sus apellidos y luego su
+-- nombre.
+select * from empleado;
+select concat(apellido1,' ',coalesce(apellido2,'')), nombre from empleado order by 1 asc;
+
+-- 16. Devuelve una lista con el nombre y el presupuesto, de los 3 departamentos
+-- que tienen mayor presupuesto.
+select nombre, max(presupuesto) from departamento group by 1 limit 3;
+
+-- 17. Devuelve una lista con el nombre y el presupuesto, de los 3 departamentos
+-- que tienen menor presupuesto.
+select nombre, min(presupuesto) from departamento group by 1;
+
+-- 18. Devuelve una lista con el nombre y el gasto, de los 2 departamentos que
+-- tienen mayor gasto.
+select nombre, presupuesto from departamento group by 1;
+
+-- 21. Devuelve una lista con el nombre de los departamentos y el presupuesto, de
+-- aquellos que tienen un presupuesto mayor o igual a 150000 euros
+select nombre, presupuesto from departamento where presupuesto >= 150000;
+
+-- 22. Devuelve una lista con el nombre de los departamentos y el gasto, de
+-- aquellos que tienen menos de 5000 euros de gastos.
+select nombre, gastos from departamento where gastos < 5000;
+
+-- 23. Devuelve una lista con el nombre de los departamentos y el presupuesto, de
+-- aquellos que tienen un presupuesto entre 100000 y 200000 euros. Sin
+-- utilizar el operador BETWEEN.
+select nombre, presupuesto from departamento where presupuesto >= 100000 and presupuesto <= 200000;
+
+-- 24.Devuelve una lista con el nombre de los departamentos que no tienen un
+-- presupuesto entre 100000 y 200000 euros. Sin utilizar el operador BETWEEN.
+select * from departamento;
+select nombre, presupuesto from departamento where presupuesto > 200000 or presupuesto <100000;
+
+-- 25. Devuelve una lista con el nombre de los departamentos que tienen un
+-- presupuesto entre 100000 y 200000 euros. Utilizando el operador BETWEEN.
+select nombre, presupuesto from departamento where presupuesto between 100000 and 200000;
+
+-- 26. Devuelve una lista con el nombre de los departamentos que no tienen un
+-- presupuesto entre 100000 y 200000 euros. Utilizando el operador BETWEEN.
+select nombre, presupuesto from departamento where presupuesto not between 100000 and 200000;
+
+-- 27. Devuelve una lista con el nombre de los departamentos, gastos y
+-- presupuesto, de aquellos departamentos donde los gastos sean mayores
+-- que el presupuesto del que disponen.
+select nombre, gastos, presupuesto from departamento where gastos > presupuesto;
+
+-- 28. Devuelve una lista con el nombre de los departamentos, gastos y
+-- presupuesto, de aquellos departamentos donde los gastos sean menores
+-- que el presupuesto del que disponen.
+select nombre, gastos, presupuesto from departamento where gastos < presupuesto;
+
+-- 29.Devuelve una lista con el nombre de los departamentos, gastos y
+-- presupuesto, de aquellos departamentos donde los gastos sean iguales al
+-- presupuesto del que disponen.
+select nombre, gastos, presupuesto from departamento where gastos = presupuesto;
+
+-- 30. Lista todos los datos de los empleados cuyo segundo apellido sea NULL.
+select * from empleado where apellido2 is null;
+
+-- 31. Lista todos los datos de los empleados cuyo segundo apellido no sea NULL.
+select * from empleado where apellido2 is not null;
+
+-- 32. Lista todos los datos de los empleados cuyo segundo apellido sea López.
+select * from empleado where apellido2 = 'López';
+
+-- 33. Lista todos los datos de los empleados cuyo segundo apellido
+-- sea Díaz o Moreno. Sin utilizar el operador IN.
+select * from empleado;
+select * from empleado where apellido2 = 'Díaz' or apellido2 = 'Moreno';
+
+-- 34. Lista todos los datos de los empleados cuyo segundo apellido
+-- sea Díaz o Moreno. Utilizando el operador IN.
+select * from empleado where apellido2 in ('Díaz', 'Moreno');
+
+-- 35.Lista los nombres, apellidos y nif de los empleados que trabajan en el
+-- departamento 3.
+select * from empleado;
+select * from departamento;
+select nombre, apellido1, apellido2, nif from empleado where id_departamento = 3;
+
+-- 36. Lista los nombres, apellidos y nif de los empleados que trabajan en los
+-- departamentos 2, 4 o 5.
+select nombre, apellido1, apellido2 from empleado where id_departamento in(2,4,5);
+
+-- 37. Devuelve un listado con los empleados y los datos de los departamentos
+-- donde trabaja cada uno.
+select * from empleado e, departamento d where e.id_departamento = d.id;
+
+
+-- 38. Devuelve un listado con los empleados y los datos de los departamentos
+-- donde trabaja cada uno. Ordena el resultado, en primer lugar por el nombre
+-- del departamento (en orden alfabético) y en segundo lugar por los apellidos
+-- y el nombre de los empleados.
+select d.nombre, e.apellido1, e.apellido2, e.nombre from empleado e inner join departamento d on e.id_departamento = d.id order by 1 asc;
+
+-- 39. Devuelve un listado con el identificador y el nombre del departamento,
+-- solamente de aquellos departamentos que tienen empleados.
+select d.id, d.nombre from departamento d inner join empleado e on d.id = e.id_departamento ;
+
+-- 40. Devuelve un listado con el identificador, el nombre del departamento y el
+-- valor del presupuesto actual del que dispone, solamente de aquellos
+-- departamentos que tienen empleados. El valor del presupuesto actual lo
+-- puede calcular restando al valor del presupuesto inicial
+-- (columna presupuesto) el valor de los gastos que ha generado
+-- (columna gastos).
+select d.id, d.nombre, presupuesto(presupuesto,gastos) as monto_disponible from departamento d inner join empleado e on d.id = e.id_departamento;
+
+-- 41. Devuelve el nombre del departamento donde trabaja el empleado que tiene
+-- el nif 38382980M.
+select d.nombre from departamento d inner join empleado e on e.id_departamento = d.id and e.nif = '38382980M';
+
+-- 42. Devuelve el nombre del departamento donde trabaja el empleado Pepe Ruiz
+-- Santana.
+select d.nombre from departamento d inner join empleado e on d.id = e.id_departamento where e.nombre = 'Pepe Ruiz Santana';
+
+-- 43. Devuelve un listado con los datos de los empleados que trabajan en el
+-- departamento de I+D. Ordena el resultado alfabéticamente.
+select e.id, e.nombre from empleado e inner join departamento d on d.id = e.id_departamento where d.id = 5;
