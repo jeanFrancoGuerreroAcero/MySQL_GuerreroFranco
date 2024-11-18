@@ -1,3 +1,4 @@
+drop database if exists AutoRenta;
 create database AutoRenta;
 
 use AutoRenta;
@@ -36,7 +37,7 @@ create table vehiculos(
 	id int primary key,
     placa varchar(15),
     tipo_vehiculo varchar(20),
-    modelo varchar(20),
+    modelo varchar(30),
     puertas int,
     capacidad int,
     sunroof varchar(10),
@@ -70,620 +71,584 @@ create table alquileres(
     fecha_esparada varchar(20)
 );
 
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (1, 'Madrid', 912345678, 600123456, 'sucursal1@madrid.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (2, 'Barcelona', 932345678, 610123456, 'sucursal2@barcelona.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (3, 'Valencia', 962345678, 620123456, 'sucursal3@valencia.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (4, 'Sevilla', 954345678, 630123456, 'sucursal4@sevilla.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (5, 'Bilbao', 944345678, 640123456, 'sucursal5@bilbao.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (6, 'Zaragoza', 976345678, 650123456, 'sucursal6@zaragoza.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (7, 'Malaga', 951345678, 660123456, 'sucursal7@malaga.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (8, 'Murcia', 968345678, 670123456, 'sucursal8@murcia.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (9, 'Granada', 958345678, 680123456, 'sucursal9@granada.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (10, 'Alicante', 965345678, 690123456, 'sucursal10@alicante.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (11, 'Córdoba', 957345678, 700123456, 'sucursal11@cordoba.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (12, 'Valladolid', 983345678, 710123456, 'sucursal12 Valladolid.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (13, 'Pamplona', 948345678, 720123456, 'sucursal13@pamplona.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (14, 'Salamanca', 923345678, 730123456, 'sucursal14@salamanca.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (15, 'La Coruña', 981345678, 740123456, 'sucursal15@coruna.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (16, 'Santander', 942345678, 750123456, 'sucursal16@santander.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (17, 'Tenerife', 922345678, 760123456, 'sucursal17@tenerife.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (18, 'Gijón', 985345678, 770123456, 'sucursal18@gijon.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (19, 'Albacete', 967345678, 780123456, 'sucursal19@albacete.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (20, 'Algeciras', 956345678, 790123456, 'sucursal20@algeciras.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (21, 'Toledo', 925345678, 800123456, 'sucursal21@toledo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (22, 'Huelva', 959345678, 810123456, 'sucursal22@huelva.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (23, 'Lérida', 973345678, 820123456, 'sucursal23@lerida.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (24, 'Santiago', 981345678, 830123456, 'sucursal24@santiago.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (25, 'Burgos', 947345678, 840123456, 'sucursal25@burgos.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (26, 'Mérida', 924345678, 850123456, 'sucursal26@merida.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (27, 'Jerez', 956445678, 860123456, 'sucursal27@jerez.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (28, 'Cádiz', 956345678, 870123456, 'sucursal28@cadiz.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (29, 'Palencia', 979345678, 880123456, 'sucursal29@palencia.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (30, 'Lugo', 982345678, 890123456, 'sucursal30@lugo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (31, 'Castellón', 964345678, 900123456, 'sucursal31@castellon.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (32, 'Ceuta', 956345679, 910123456, 'sucursal32@ceuta.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (33, 'Melilla', 952345679, 920123456, 'sucursal33@melilla.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (34, 'Almería', 950345678, 930123456, 'sucursal34@almeria.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (35, 'Cáceres', 927345678, 940123456, 'sucursal35@caceres.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (36, 'Talavera', 925456789, 950123456, 'sucursal36@talavera.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (37, 'Puertollano', 926456789, 960123456, 'sucursal37@puertollano.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (38, 'Nerja', 952456789, 970123456, 'sucursal38@nerja.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (39, 'Ronda', 952456789, 980123456, 'sucursal39@ronda.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (40, 'Benidorm', 965456789, 990123456, 'sucursal40@benidorm.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (41, 'Las Palmas', 928456789, 600654321, 'sucursal41@laspalmas.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (42, 'San Sebastián', 943456789, 610654321, 'sucursal42@sandsebastian.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (43, 'Avilés', 985456789, 620654321, 'sucursal43@aviles.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (44, 'Malgrat de Mar', 937456789, 630654321, 'sucursal44@malgrat.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (45, 'Benalmádena', 952456780, 640654321, 'sucursal45@benalmadena.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (46, 'Fuenlabrada', 918456789, 650654321, 'sucursal46@fuenlabrada.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (47, 'Getafe', 916456789, 660654321, 'sucursal47@getafe.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (48, 'Alcalá de Henares', 918156789, 670654321, 'sucursal48@alcala.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (49, 'Torreón', 942156789, 680654321, 'sucursal49@torreon.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (50, 'Cartagena', 968956789, 690654321, 'sucursal50@cartagena.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (51, 'Barcelona', 932345678, 622345678, 'sucursal_barcelona@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (52, 'Valencia', 962345678, 632345678, 'sucursal_valencia@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (53, 'Sevilla', 954345678, 642345678, 'sucursal_sevilla@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (54, 'Zaragoza', 976345678, 652345678, 'sucursal_zaragoza@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (55, 'Málaga', 952345678, 662345678, 'sucursal_malaga@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (56, 'Murcia', 968345678, 672345678, 'sucursal_murcia@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (57, 'Palma', 971345678, 682345678, 'sucursal_palma@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (58, 'Bilbao', 944345678, 692345678, 'sucursal_bilbao@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (59, 'Granada', 958345678, 602345678, 'sucursal_granada@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (60, 'Alicante', 965345678, 612345679, 'sucursal_alicante@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (61, 'Córdoba', 957345678, 622345679, 'sucursal_cordoba@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (62, 'Valladolid', 983345678, 632345679, 'sucursal_valladolid@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (63, 'Santander', 942345678, 642345679, 'sucursal_santander@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (64, 'San Sebastián', 943345678, 652345679, 'sucursal_sansebastian@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (65, 'Salamanca', 923345678, 662345679, 'sucursal_salamanca@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (66, 'Toledo', 925345678, 672345679, 'sucursal_toledo@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (67, 'Almeria', 950345678, 682345679, 'sucursal_almeria@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (68, 'Huelva', 959345678, 692345679, 'sucursal_huelva@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (69, 'Tarragona', 977345678, 602345680, 'sucursal_tarragona@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (70, 'Logroño', 941345678, 612345680, 'sucursal_logrono@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (71, 'Burgos', 947345678, 622345680, 'sucursal_burgos@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (72, 'San Fernando', 956345678, 632345680, 'sucursal_sanfernando@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (73, 'Castellón', 964345678, 642345680, 'sucursal_castellon@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (74, 'Soria', 975345678, 652345680, 'sucursal_soria@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (75, 'Ceuta', 956345679, 662345680, 'sucursal_ceuta@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (76, 'Melilla', 952345679, 672345680, 'sucursal_melilla@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (77, 'Úbeda', 953345679, 682345680, 'sucursal_udeba@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (78, 'Talavera de la Reina', 925345679, 692345680, 'sucursal_talavera@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (79, 'Cádiz', 956345679, 602345681, 'sucursal_cadiz@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (80, 'Manresa', 938345679, 612345681, 'sucursal_manresa@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (81, 'Mataró', 937345679, 622345681, 'sucursal_mataro@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (82, 'Tarragona', 977345679, 632345681, 'sucursal_tarragona2@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (83, 'Getafe', 916345679, 642345681, 'sucursal_getafe@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (84, 'Alcalá de Henares', 918345679, 652345681, 'sucursal_alcala@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (85, 'Torrejón de Ardoz', 916345680, 662345681, 'sucursal_torrejon@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (86, 'Cerdanyola del Vallès', 935345680, 672345681, 'sucursal_cerdanyola@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (87, 'Vigo', 886345680, 682345681, 'sucursal_vigo@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (88, 'Valladolid', 983345679, 692345681, 'sucursal_valladolid@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (89, 'A Coruña', 981345680, 602345682, 'sucursal_coruna@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (90, 'Ourense', 988345680, 612345682, 'sucursal_ourense@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (91, 'Lugo', 982345680, 622345682, 'sucursal_lugo@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (92, 'Berga', 938345680, 632345682, 'sucursal_berga@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (93, 'Girona', 972345680, 642345682, 'sucursal_girona@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (94, 'Granollers', 938345681, 652345682, 'sucursal_granollers@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (95, 'Martorell', 937345681, 662345682, 'sucursal_martorell@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (96, 'Badalona', 934345681, 672345682, 'sucursal_badalona@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (97, 'Santa Coloma de Gramenet', 936345681, 682345682, 'sucursal_santacoloma@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (98, 'Tarrasa', 937345681, 692345682, 'sucursal_tarrasa@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (99, 'Cornellà de Llobregat', 934345681, 602345683, 'sucursal_cornella@ejemplo.com');
-INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES (100, 'Sant Boi de Llobregat', 936345681, 612345683, 'sucursal_santboi@ejemplo.com');
 
+INSERT INTO sucursales (id, ciudad, telefono_fijo, celular, correo_electronico) VALUES
+(1, 'Madrid', 912345678, 600123456, 'madrid@sucursales.com'),
+(2, 'Barcelona', 933456789, 600987654, 'barcelona@sucursales.com'),
+(3, 'Valencia', 961234567, 600111222, 'valencia@sucursales.com'),
+(4, 'Sevilla', 954123456, 600333444, 'sevilla@sucursales.com'),
+(5, 'Bilbao', 944567890, 600555666, 'bilbao@sucursales.com'),
+(6, 'Zaragoza', 976234567, 600777888, 'zaragoza@sucursales.com'),
+(7, 'Murcia', 968234567, 600999000, 'murcia@sucursales.com'),
+(8, 'Malaga', 952345678, 600111223, 'malaga@sucursales.com'),
+(9, 'Alicante', 965123456, 600444555, 'alicante@sucursales.com'),
+(10, 'Córdoba', 957234567, 600666777, 'cordoba@sucursales.com'),
+(11, 'Madrid', 912345679, 600223344, 'madrid2@sucursales.com'),
+(12, 'Barcelona', 933456780, 600223455, 'barcelona2@sucursales.com'),
+(13, 'Valencia', 961234568, 600223466, 'valencia2@sucursales.com'),
+(14, 'Sevilla', 954123457, 600223477, 'sevilla2@sucursales.com'),
+(15, 'Bilbao', 944567891, 600223488, 'bilbao2@sucursales.com'),
+(16, 'Zaragoza', 976234568, 600223499, 'zaragoza2@sucursales.com'),
+(17, 'Murcia', 968234568, 600223500, 'murcia2@sucursales.com'),
+(18, 'Malaga', 952345679, 600223511, 'malaga2@sucursales.com'),
+(19, 'Alicante', 965123457, 600223522, 'alicante2@sucursales.com'),
+(20, 'Córdoba', 957234568, 600223533, 'cordoba2@sucursales.com'),
+(21, 'Madrid', 912345680, 600223544, 'madrid3@sucursales.com'),
+(22, 'Barcelona', 933456781, 600223555, 'barcelona3@sucursales.com'),
+(23, 'Valencia', 961234569, 600223566, 'valencia3@sucursales.com'),
+(24, 'Sevilla', 954123458, 600223577, 'sevilla3@sucursales.com'),
+(25, 'Bilbao', 944567892, 600223588, 'bilbao3@sucursales.com'),
+(26, 'Zaragoza', 976234569, 600223599, 'zaragoza3@sucursales.com'),
+(27, 'Murcia', 968234569, 600223600, 'murcia3@sucursales.com'),
+(28, 'Malaga', 952345680, 600223611, 'malaga3@sucursales.com'),
+(29, 'Alicante', 965123458, 600223622, 'alicante3@sucursales.com'),
+(30, 'Córdoba', 957234569, 600223633, 'cordoba3@sucursales.com'),
+(31, 'Madrid', 912345681, 600223644, 'madrid4@sucursales.com'),
+(32, 'Barcelona', 933456782, 600223655, 'barcelona4@sucursales.com'),
+(33, 'Valencia', 961234570, 600223666, 'valencia4@sucursales.com'),
+(34, 'Sevilla', 954123459, 600223677, 'sevilla4@sucursales.com'),
+(35, 'Bilbao', 944567893, 600223688, 'bilbao4@sucursales.com'),
+(36, 'Zaragoza', 976234570, 600223699, 'zaragoza4@sucursales.com'),
+(37, 'Murcia', 968234570, 600223700, 'murcia4@sucursales.com'),
+(38, 'Malaga', 952345681, 600223711, 'malaga4@sucursales.com'),
+(39, 'Alicante', 965123459, 600223722, 'alicante4@sucursales.com'),
+(40, 'Córdoba', 957234570, 600223733, 'cordoba4@sucursales.com'),
+(41, 'Madrid', 912345682, 600223744, 'madrid5@sucursales.com'),
+(42, 'Barcelona', 933456783, 600223755, 'barcelona5@sucursales.com'),
+(43, 'Valencia', 961234571, 600223766, 'valencia5@sucursales.com'),
+(44, 'Sevilla', 954123460, 600223777, 'sevilla5@sucursales.com'),
+(45, 'Bilbao', 944567894, 600223788, 'bilbao5@sucursales.com'),
+(46, 'Zaragoza', 976234571, 600223799, 'zaragoza5@sucursales.com'),
+(47, 'Murcia', 968234571, 600223800, 'murcia5@sucursales.com'),
+(48, 'Malaga', 952345682, 600223811, 'malaga5@sucursales.com'),
+(49, 'Alicante', 965123460, 600223822, 'alicante5@sucursales.com'),
+(50, 'Córdoba', 957234571, 600223833, 'cordoba5@sucursales.com'),
+(51, 'Madrid', 912345683, 600223844, 'madrid6@sucursales.com'),
+(52, 'Barcelona', 933456784, 600223855, 'barcelona6@sucursales.com'),
+(53, 'Valencia', 961234572, 600223866, 'valencia6@sucursales.com'),
+(54, 'Sevilla', 954123461, 600223877, 'sevilla6@sucursales.com'),
+(55, 'Bilbao', 944567895, 600223888, 'bilbao6@sucursales.com'),
+(56, 'Zaragoza', 976234572, 600223899, 'zaragoza6@sucursales.com'),
+(57, 'Murcia', 968234572, 600223900, 'murcia6@sucursales.com'),
+(58, 'Malaga', 952345683, 600223911, 'malaga6@sucursales.com'),
+(59, 'Alicante', 965123461, 600223922, 'alicante6@sucursales.com'),
+(60, 'Córdoba', 957234572, 600223933, 'cordoba6@sucursales.com'),
+(61, 'Madrid', 912345684, 600223944, 'madrid7@sucursales.com'),
+(62, 'Barcelona', 933456785, 600223955, 'barcelona7@sucursales.com'),
+(63, 'Valencia', 961234573, 600223966, 'valencia7@sucursales.com'),
+(64, 'Sevilla', 954123462, 600223977, 'sevilla7@sucursales.com'),
+(65, 'Bilbao', 944567896, 600223988, 'bilbao7@sucursales.com'),
+(66, 'Zaragoza', 976234573, 600223999, 'zaragoza7@sucursales.com'),
+(67, 'Murcia', 968234573, 600224000, 'murcia7@sucursales.com'),
+(68, 'Malaga', 952345684, 600224011, 'malaga7@sucursales.com'),
+(69, 'Alicante', 965123462, 600224022, 'alicante7@sucursales.com'),
+(70, 'Córdoba', 957234573, 600224033, 'cordoba7@sucursales.com'),
+(71, 'Madrid', 912345685, 600224044, 'madrid8@sucursales.com'),
+(72, 'Barcelona', 933456786, 600224055, 'barcelona8@sucursales.com'),
+(73, 'Valencia', 961234574, 600224066, 'valencia8@sucursales.com'),
+(74, 'Sevilla', 954123463, 600224077, 'sevilla8@sucursales.com'),
+(75, 'Bilbao', 944567897, 600224088, 'bilbao8@sucursales.com'),
+(76, 'Zaragoza', 976234575, 600224099, 'zaragoza8@sucursales.com'),
+(77, 'Murcia', 968234574, 600224100, 'murcia8@sucursales.com'),
+(78, 'Malaga', 952345685, 600224111, 'malaga8@sucursales.com'),
+(79, 'Alicante', 965123463, 600224122, 'alicante8@sucursales.com'),
+(80, 'Córdoba', 957234574, 600224133, 'cordoba8@sucursales.com'),
+(81, 'Madrid', 912345686, 600224144, 'madrid9@sucursales.com'),
+(82, 'Barcelona', 933456787, 600224155, 'barcelona9@sucursales.com'),
+(83, 'Valencia', 961234575, 600224166, 'valencia9@sucursales.com'),
+(84, 'Sevilla', 954123464, 600224177, 'sevilla9@sucursales.com'),
+(85, 'Bilbao', 944567898, 600224188, 'bilbao9@sucursales.com'),
+(86, 'Zaragoza', 976234575, 600224199, 'zaragoza9@sucursales.com'),
+(87, 'Murcia', 968234575, 600224200, 'murcia9@sucursales.com'),
+(88, 'Malaga', 952345686, 600224211, 'malaga9@sucursales.com'),
+(89, 'Alicante', 965123464, 600224222, 'alicante9@sucursales.com'),
+(90, 'Córdoba', 957234575, 600224233, 'cordoba9@sucursales.com'),
+(91, 'Madrid', 912345687, 600224244, 'madrid10@sucursales.com'),
+(92, 'Barcelona', 933456788, 600224255, 'barcelona10@sucursales.com'),
+(93, 'Valencia', 961234576, 600224266, 'valencia10@sucursales.com'),
+(94, 'Sevilla', 954123465, 600224277, 'sevilla10@sucursales.com'),
+(95, 'Bilbao', 944567899, 600224288, 'bilbao10@sucursales.com'),
+(96, 'Zaragoza', 976234576, 600224299, 'zaragoza10@sucursales.com'),
+(97, 'Murcia', 968234576, 600224300, 'murcia10@sucursales.com'),
+(98, 'Malaga', 952345687, 600224311, 'malaga10@sucursales.com'),
+(99, 'Alicante', 965123465, 600224322, 'alicante10@sucursales.com'),
+(100, 'Córdoba', 957234576, 600224333, 'cordoba10@sucursales.com');
 
 
 INSERT INTO clientes (id, cedula, nombre, correo_electronico, direccion, residencia, celular) VALUES
-(1, 12345678, 'Juan Pérez', 'juan.perez@email.com', 'Calle 1', 'Ciudad A', 1234567890),
-(3, 12312312, 'Pedro Martínez', 'pedro.martinez@example.com', 'Calle 3', 'Ciudad C', 1234567892),
-(4, 32132132, 'Ana Torres', 'ana.torres@example.com', 'Calle 4', 'Ciudad D', 1234567893),
-(5, 45645645, 'Carlos Fernández', 'carlos.fernandez@example.com', 'Calle 5', 'Ciudad E', 1234567894),
-(6, 65465465, 'Laura Rodríguez', 'laura.rodriguez@example.com', 'Calle 6', 'Ciudad F', 1234567895),
-(7, 98765432, 'Jorge Díaz', 'jorge.diaz@example.com', 'Calle 7', 'Ciudad G', 1234567896),
-(8, 23456789, 'Sofía López', 'sofia.lopez@example.com', 'Calle 8', 'Ciudad H', 1234567897),
-(9, 56789012, 'Luis Herrera', 'luis.herrera@example.com', 'Calle 9', 'Ciudad I', 1234567898),
-(10, 78901234, 'Claudia Moreno', 'claudia.moreno@example.com', 'Calle 10', 'Ciudad J', 1234567899),
-(11, 13579111, 'Fernando Castro', 'fernando.castro@example.com', 'Calle 11', 'Ciudad K', 1234567800),
-(12, 24681012, 'Gabriela Silva', 'gabriela.silva@example.com', 'Calle 12', 'Ciudad L', 1234567801),
-(13, 35791313, 'Andrés Ruiz', 'andres.ruiz@example.com', 'Calle 13', 'Ciudad M', 1234567802),
-(14, 46802414, 'Patricia Ortega', 'patricia.ortega@example.com', 'Calle 14', 'Ciudad N', 1234567803),
-(15, 57913515, 'Hugo Morales', 'hugo.morales@example.com', 'Calle 15', 'Ciudad O', 1234567804),
-(16, 68024616, 'Isabel Fernández', 'isabel.fernandez@example.com', 'Calle 16', 'Ciudad P', 1234567805),
-(17, 79135717, 'Ricardo Paredes', 'ricardo.paredes@example.com', 'Calle 17', 'Ciudad Q', 1234567806),
-(18, 80246818, 'Mariana Cortez', 'mariana.cortez@example.com', 'Calle 18', 'Ciudad R', 1234567807),
-(19, 91357919, 'Diego Gil', 'diego.gil@example.com', 'Calle 19', 'Ciudad S', 1234567808),
-(20, 12468020, 'Lucía Barrera', 'lucia.barrera@example.com', 'Calle 20', 'Ciudad T', 1234567809),
-(21, 13579121, 'Alberto Jaramillo', 'alberto.jaramillo@example.com', 'Calle 21', 'Ciudad U', 1234567810),
-(22, 24680222, 'Natalia Sosa', 'natalia.sosa@example.com', 'Calle 22', 'Ciudad V', 1234567811),
-(23, 35791323, 'Mónica Vega', 'monica.vega@example.com', 'Calle 23', 'Ciudad W', 1234567812),
-(24, 46802424, 'Felipe Romero', 'felipe.romero@example.com', 'Calle 24', 'Ciudad X', 1234567813),
-(25, 57913525, 'Carmen Castillo', 'carmen.castillo@example.com', 'Calle 25', 'Ciudad Y', 1234567814),
-(26, 68024626, 'Valentina León', 'valentina.leon@example.com', 'Calle 26', 'Ciudad Z', 1234567815),
-(27, 79135727, 'Julián Alarcón', 'julian.alarcon@example.com', 'Calle 27', 'Ciudad AA', 1234567816),
-(28, 80246828, 'Santiago Pino', 'santiago.pino@example.com', 'Calle 28', 'Ciudad AB', 1234567817),
-(29, 91357929, 'María Inés', 'maria.ines@example.com', 'Calle 29', 'Ciudad AC', 1234567818),
-(30, 12468030, 'Salvador Lazo', 'salvador.lazo@example.com', 'Calle 30', 'Ciudad AD', 1234567819),
-(31, 13579131, 'Raquel Pino', 'raquel.pino@example.com', 'Calle 31', 'Ciudad AE', 1234567820),
-(32, 24680232, 'Cristian Salgado', 'cristian.salgado@example.com', 'Calle 32', 'Ciudad AF', 1234567821),
-(33, 35791333, 'Erika Ocampo', 'erika.ocampo@example.com', 'Calle 33', 'Ciudad AG', 1234567822),
-(34, 46802434, 'Nicolás Duque', 'nicolas.duque@example.com', 'Calle 34', 'Ciudad AH', 1234567823),
-(35, 57913535, 'Gabriel Morán', 'gabriel.moran@example.com', 'Calle 35', 'Ciudad AI', 1234567824),
-(36, 68024636, 'Natalia de León', 'natalia.deleon@example.com', 'Calle 36', 'Ciudad AJ', 1234567825),
-(37, 79135737, 'Ricardo Ávila', 'ricardo.avila@example.com', 'Calle 37', 'Ciudad AK', 1234567826),
-(38, 80246838, 'Claudia Barrientos', 'claudia.barrientos@example.com', 'Calle 38', 'Ciudad AL', 1234567827),
-(39, 91357939, 'Jesús Espinoza', 'jesus.espinoza@example.com', 'Calle 39', 'Ciudad AM', 1234567828),
-(40, 12468040, 'Laura Esteban', 'laura.esteban@example.com', 'Calle 40', 'Ciudad AN', 1234567829),
-(41, 13579141, 'Fernando Ortega', 'fernando.ortega@example.com', 'Calle 41', 'Ciudad AO', 1234567830),
-(42, 24680242, 'Sofía Silva', 'sofia.silva@example.com', 'Calle 42', 'Ciudad AP', 1234567831),
-(43, 35791343, 'Pablo Mendoza', 'pablo.mendoza@example.com', 'Calle 43', 'Ciudad AQ', 1234567832),
-(44, 46802444, 'Daniela Ramírez', 'daniela.ramirez@example.com', 'Calle 44', 'Ciudad AR', 1234567833),
-(45, 57913545, 'Augusto Cardenas', 'augusto.cardenas@example.com', 'Calle 45', 'Ciudad AS', 1234567834),
-(46, 68024646, 'Verónica Castel', 'veronica.castel@example.com', 'Calle 46', 'Ciudad AT', 1234567835),
-(47, 79135747, 'Máximo Quiroz', 'maximo.quiroz@example.com', 'Calle 47', 'Ciudad AU', 1234567836),
-(48, 80246848, 'Cecilia Godoy', 'cecilia.godoy@example.com', 'Calle 48', 'Ciudad AV', 1234567837),
-(49, 91357949, 'Felipe López', 'felipe.lopez@example.com', 'Calle 49', 'Ciudad AW', 1234567838),
-(50, 12468050, 'Elena Salazar', 'elena.salazar@example.com', 'Calle 50', 'Ciudad AX', 1234567839),
-(51, 123456789, 'Juan Pérez', 'juan.perez@example.com', 'Calle 1', 'Ciudad A', 321654987),
-(52, 987654321, 'Ana Gómez', 'ana.gomez@example.com', 'Calle 2', 'Ciudad B', 321789654),
-(53, 112233445, 'Carlos López', 'carlos.lopez@example.com', 'Calle 3', 'Ciudad C', 321456987),
-(54, 223344556, 'Laura Torres', 'laura.torres@example.com', 'Calle 4', 'Ciudad D', 321987654),
-(55, 334455667, 'Mario Fernández', 'mario.fernandez@example.com', 'Calle 5', 'Ciudad E', 321345678),
-(56, 445566778, 'Sofía Martínez', 'sofia.martinez@example.com', 'Calle 6', 'Ciudad F', 321876543),
-(57, 556677889, 'Diego Sánchez', 'diego.sanchez@example.com', 'Calle 7', 'Ciudad G', 321213456),
-(58, 667788990, 'Isabella Ruiz', 'isabella.ruiz@example.com', 'Calle 8', 'Ciudad H', 321654321),
-(59, 778899001, 'Luis Morales', 'luis.morales@example.com', 'Calle 9', 'Ciudad I', 321987123),
-(60, 889900112, 'Marta Díaz', 'marta.diaz@example.com', 'Calle 10', 'Ciudad J', 321345789),
-(61, 990011223, 'Carmen Reyes', 'carmen.reyes@example.com', 'Calle 11', 'Ciudad K', 321876543),
-(62, 111223344, 'Andrés Castro', 'andres.castro@example.com', 'Calle 12', 'Ciudad L', 321234567),
-(63, 222334455, 'Juliana Aguirre', 'juliana.aguirre@example.com', 'Calle 13', 'Ciudad M', 321765432),
-(64, 333445566, 'Javier Rojas', 'javier.rojas@example.com', 'Calle 14', 'Ciudad N', 321654987),
-(65, 444556677, 'Patricia Ortega', 'patricia.ortega@example.com', 'Calle 15', 'Ciudad O', 321789654),
-(66, 555667788, 'Fernando Jiménez', 'fernando.jimenez@example.com', 'Calle 16', 'Ciudad P', 321456123),
-(67, 666778899, 'Nadia Castillo', 'nadia.castillo@example.com', 'Calle 17', 'Ciudad Q', 321987321),
-(68, 777889900, 'Cristian Villarreal', 'cristian.villarreal@example.com', 'Calle 18', 'Ciudad R', 321213234),
-(69, 888990011, 'Paola López', 'paola.lopez@example.com', 'Calle 19', 'Ciudad S', 321654876),
-(70, 999001122, 'Ricardo Moreno', 'ricardo.moreno@example.com', 'Calle 20', 'Ciudad T', 321987789),
-(71, 101112131, 'Mónica Valenzuela', 'monica.valenzuela@example.com', 'Calle 21', 'Ciudad U', 321234123),
-(72, 121314151, 'Victoria Ortega', 'victoria.ortega@example.com', 'Calle 22', 'Ciudad V', 321765543),
-(73, 131415161, 'Sebastián Paredes', 'sebastian.paredes@example.com', 'Calle 23', 'Ciudad W', 321654321),
-(74, 141516171, 'Amanda Salazar', 'amanda.salazar@example.com', 'Calle 24', 'Ciudad X', 321876321),
-(75, 151617181, 'Alfredo Carrillo', 'alfredo.carrillo@example.com', 'Calle 25', 'Ciudad Y', 321213321),
-(76, 161718191, 'Julio Montoya', 'julio.montoya@example.com', 'Calle 26', 'Ciudad Z', 321654456),
-(77, 171819202, 'Tatiana Barrios', 'tatiana.barrios@example.com', 'Calle 27', 'Ciudad AA', 321987678),
-(78, 181920212, 'Salvador Ceballos', 'salvador.ceballos@example.com', 'Calle 28', 'Ciudad AB', 321345678),
-(79, 192021222, 'Fabiola Alarcón', 'fabiola.alarcon@example.com', 'Calle 29', 'Ciudad AC', 321876543),
-(80, 202122232, 'Ricardo Quiroz', 'ricardo.quiroz@example.com', 'Calle 30', 'Ciudad AD', 321234567),
-(81, 212223242, 'Gloria Ramos', 'gloria.ramos@example.com', 'Calle 31', 'Ciudad AE', 321765432),
-(82, 222324252, 'Victor Espinoza', 'victor.espinoza@example.com', 'Calle 32', 'Ciudad AF', 321654987),
-(83, 232425262, 'Rosa Méndez', 'rosa.mendez@example.com', 'Calle 33', 'Ciudad AG', 321789654),
-(84, 242526272, 'Edgar Guerrero', 'edgar.guerrero@example.com', 'Calle 34', 'Ciudad AH', 321456789),
-(85, 252627282, 'Ximena Arango', 'ximena.arango@example.com', 'Calle 35', 'Ciudad AI', 321876543),
-(86, 262728292, 'Alba Jaramillo', 'alba.jaramillo@example.com', 'Calle 36', 'Ciudad AJ', 321213456),
-(87, 272829303, 'Marisol Zúñiga', 'marisol.zuniga@example.com', 'Calle 37', 'Ciudad AK', 321654321),
-(88, 282930313, 'Jorge Jiménez', 'jorge.jimenez@example.com', 'Calle 38', 'Ciudad AL', 321987654),
-(89, 293031323, 'Beatriz Duque', 'beatriz.duque@example.com', 'Calle 39', 'Ciudad AM', 321345789),
-(90, 303132333, 'Esteban Saavedra', 'esteban.saavedra@example.com', 'Calle 40', 'Ciudad AN', 321876321),
-(91, 313233343, 'Claudia Arce', 'claudia.arce@example.com', 'Calle 41', 'Ciudad AO', 321234234),
-(92, 323435353, 'Fernando Rivas', 'fernando.rivas@example.com', 'Calle 42', 'Ciudad AP', 321765765),
-(93, 334546363, 'Patricia Costas', 'patricia.costas@example.com', 'Calle 43', 'Ciudad AQ', 321654234),
-(94, 345657373, 'Omar Salas', 'omar.salas@example.com', 'Calle 44', 'Ciudad AR', 321789123),
-(95, 456768383, 'Lucía Castro', 'lucia.castro@example.com', 'Calle 45', 'Ciudad AS', 321123456),
-(96, 567879393, 'David Lizarazo', 'david.lizarazo@example.com', 'Calle 46', 'Ciudad AT', 321987543),
-(97, 678980404, 'Camila Arteaga', 'camila.arteaga@example.com', 'Calle 47', 'Ciudad AU', 321456789),
-(98, 789081515, 'Julián León', 'julian.leon@example.com', 'Calle 48', 'Ciudad AV', 321789654),
-(99, 890192626, 'Natalia Palma', 'natalia.palma@example.com', 'Calle 49', 'Ciudad AW', 321234987),
-(100, 901203737, 'Ricardo Sampaio', 'ricardo.sampaio@example.com', 'Calle 50', 'Ciudad AX', 321567891);
-
+(1, 12345678, 'Juan Pérez', 'juan.perez@mail.com', 'Calle Falsa 123', 'Madrid', 600112233),
+(2, 23456789, 'Ana López', 'ana.lopez@mail.com', 'Avenida del Sol 456', 'Barcelona', 600223344),
+(3, 34567890, 'Carlos García', 'carlos.garcia@mail.com', 'Calle Larga 789', 'Valencia', 600334455),
+(4, 45678901, 'María Fernández', 'maria.fernandez@mail.com', 'Calle del Mar 321', 'Sevilla', 600445566),
+(5, 56789012, 'Pedro Ruiz', 'pedro.ruiz@mail.com', 'Plaza Mayor 654', 'Bilbao', 600556677),
+(6, 67890123, 'Lucía Sánchez', 'lucia.sanchez@mail.com', 'Calle de la Luna 987', 'Zaragoza', 600667788),
+(7, 78901234, 'Antonio Díaz', 'antonio.diaz@mail.com', 'Calle Real 159', 'Murcia', 600778899),
+(8, 89012345, 'Sara Martín', 'sara.martin@mail.com', 'Calle de los Pinos 258', 'Malaga', 600889900),
+(9, 90123456, 'José González', 'jose.gonzalez@mail.com', 'Avenida del Sol 654', 'Alicante', 600990011),
+(10, 11223344, 'Laura Pérez', 'laura.perez@mail.com', 'Calle Central 321', 'Córdoba', 600123456),
+(11, 22334455, 'Luis Gómez', 'luis.gomez@mail.com', 'Calle 1 123', 'Madrid', 600234567),
+(12, 33445566, 'David Romero', 'david.romero@mail.com', 'Calle Mayor 789', 'Barcelona', 600345678),
+(13, 44556677, 'Marta Ruiz', 'marta.ruiz@mail.com', 'Avenida Libertad 456', 'Valencia', 600456789),
+(14, 55667788, 'Pedro González', 'pedro.gonzalez@mail.com', 'Calle del Sol 123', 'Sevilla', 600567890),
+(15, 66778899, 'Esther López', 'esther.lopez@mail.com', 'Calle Primavera 654', 'Bilbao', 600678901),
+(16, 77889900, 'Carlos Martín', 'carlos.martin@mail.com', 'Calle Luna 987', 'Zaragoza', 600789012),
+(17, 88990011, 'Raquel Sánchez', 'raquel.sanchez@mail.com', 'Plaza de la Reina 321', 'Murcia', 600890123),
+(18, 99001122, 'José Antonio Pérez', 'jose.antonio.perez@mail.com', 'Calle del Mar 159', 'Malaga', 600901234),
+(19, 10111213, 'Alba Díaz', 'alba.diaz@mail.com', 'Calle Río 258', 'Alicante', 600112345),
+(20, 11223314, 'Julio Fernández', 'julio.fernandez@mail.com', 'Calle Central 789', 'Córdoba', 600223456),
+(21, 22334466, 'Beatriz Romero', 'beatriz.romero@mail.com', 'Avenida de la Paz 456', 'Madrid', 600334567),
+(22, 33445577, 'Javier Ruiz', 'javier.ruiz@mail.com', 'Calle Sur 123', 'Barcelona', 600445678),
+(23, 44556688, 'Antonio González', 'antonio.gonzalez@mail.com', 'Plaza del Sol 654', 'Valencia', 600556789),
+(24, 55667799, 'Sandra López', 'sandra.lopez@mail.com', 'Calle del Carmen 987', 'Sevilla', 600667890),
+(25, 66778800, 'Pablo García', 'pablo.garcia@mail.com', 'Calle Alfonso 321', 'Bilbao', 600778901),
+(26, 77889911, 'Alberto Sánchez', 'alberto.sanchez@mail.com', 'Calle Estrella 123', 'Zaragoza', 600889012),
+(27, 88990022, 'Raquel Pérez', 'raquel.perez@mail.com', 'Avenida Nuevo 654', 'Murcia', 600990123),
+(28, 99001133, 'Miguel Ángel Díaz', 'miguel.angel.diaz@mail.com', 'Calle del Sol 987', 'Malaga', 600112456),
+(29, 10111214, 'Carmen Martín', 'carmen.martin@mail.com', 'Calle Paz 258', 'Alicante', 600223567),
+(30, 11223315, 'Fernando Ruiz', 'fernando.ruiz@mail.com', 'Avenida Libertad 123', 'Córdoba', 600334678),
+(31, 22334477, 'Pablo Fernández', 'pablo.fernandez@mail.com', 'Plaza Mayor 789', 'Madrid', 600445789),
+(32, 33445588, 'Laura Romero', 'laura.romero@mail.com', 'Calle Real 321', 'Barcelona', 600556890),
+(33, 44556699, 'Antonio Martín', 'antonio.martin@mail.com', 'Calle Libertad 654', 'Valencia', 600667901),
+(34, 55667700, 'Julio Sánchez', 'julio.sanchez@mail.com', 'Avenida 123', 'Sevilla', 600778012),
+(35, 66778811, 'David Fernández', 'david.fernandez@mail.com', 'Calle del Mar 987', 'Bilbao', 600889123),
+(36, 77889922, 'Sandra Ruiz', 'sandra.ruiz@mail.com', 'Plaza de la Reina 321', 'Zaragoza', 600990234),
+(37, 88990033, 'Beatriz Pérez', 'beatriz.perez@mail.com', 'Calle de la Paz 654', 'Murcia', 600112567),
+(38, 99001144, 'Fernando González', 'fernando.gonzalez@mail.com', 'Calle Río 123', 'Malaga', 600223678),
+(39, 10111215, 'María Sánchez', 'maria.sanchez@mail.com', 'Calle Pino 258', 'Alicante', 600334789),
+(40, 11223316, 'Luis Pérez', 'luis.perez@mail.com', 'Avenida Sol 789', 'Córdoba', 600445890),
+(41, 22334488, 'Sonia López', 'sonia.lopez@mail.com', 'Calle 1 123', 'Madrid', 600556901),
+(42, 33445599, 'Pedro Romero', 'pedro.romero@mail.com', 'Plaza Central 456', 'Barcelona', 600667012),
+(43, 44556600, 'Alba Sánchez', 'alba.sanchez@mail.com', 'Calle Pinos 789', 'Valencia', 600778123),
+(44, 55667711, 'José Díaz', 'jose.diaz@mail.com', 'Calle Sol 123', 'Sevilla', 600889234),
+(45, 66778822, 'David Martín', 'david.martin@mail.com', 'Avenida Real 654', 'Bilbao', 600990345),
+(46, 77889933, 'Laura Fernández', 'laura.fernandez@mail.com', 'Calle Alfonso 987', 'Zaragoza', 600112678),
+(47, 88990044, 'Miguel Pérez', 'miguel.perez@mail.com', 'Plaza Mayor 321', 'Murcia', 600223789),
+(48, 99001155, 'Carlos Sánchez', 'carlos.sanchez@mail.com', 'Calle Reina 654', 'Malaga', 600334890),
+(49, 10111216, 'Patricia Romero', 'patricia.romero@mail.com', 'Avenida Libertad 123', 'Alicante', 600445901),
+(50, 11223317, 'Sara González', 'sara.gonzalez@mail.com', 'Plaza del Sol 789', 'Córdoba', 600556012),
+(51, 22334499, 'Carlos Ruiz', 'carlos.ruiz@mail.com', 'Calle Central 123', 'Madrid', 600667123),
+(52, 33445600, 'Antonio Pérez', 'antonio.perez@mail.com', 'Calle Real 456', 'Barcelona', 600778234),
+(53, 44556711, 'María Fernández', 'maria.fernandez@mail.com', 'Avenida del Sol 789', 'Valencia', 600889345),
+(54, 55667822, 'Fernando Martín', 'fernando.martin@mail.com', 'Calle del Mar 321', 'Sevilla', 600990456),
+(55, 66778933, 'Pablo Romero', 'pablo.romero@mail.com', 'Plaza Mayor 654', 'Bilbao', 600112789),
+(56, 77890044, 'Esther Ruiz', 'esther.ruiz@mail.com', 'Calle de la Paz 987', 'Zaragoza', 600223890),
+(57, 88901155, 'Raúl Sánchez', 'raul.sanchez@mail.com', 'Avenida Real 123', 'Murcia', 600334901),
+(58, 99012266, 'Ana González', 'ana.gonzalez@mail.com', 'Plaza del Sol 789', 'Malaga', 600445012),
+(59, 10112377, 'Luis Fernández', 'luis.fernandez@mail.com', 'Calle Río 258', 'Alicante', 600556123),
+(60, 11223488, 'Beatriz Pérez', 'beatriz.perez@mail.com', 'Avenida Sol 321', 'Córdoba', 600667234),
+(61, 22334599, 'José Ruiz', 'jose.ruiz@mail.com', 'Calle Luna 654', 'Madrid', 600778345),
+(62, 33445700, 'Juan Sánchez', 'juan.sanchez@mail.com', 'Calle Real 789', 'Barcelona', 600889456),
+(63, 44556811, 'Patricia González', 'patricia.gonzalez@mail.com', 'Avenida de la Paz 123', 'Valencia', 600990567),
+(64, 55667922, 'Miguel Díaz', 'miguel.diaz@mail.com', 'Calle del Sol 321', 'Sevilla', 600112678),
+(65, 66779033, 'Carmen Fernández', 'carmen.fernandez@mail.com', 'Plaza Central 654', 'Bilbao', 600223789),
+(66, 77890144, 'Raquel Ruiz', 'raquel.ruiz@mail.com', 'Calle 1 123', 'Zaragoza', 600334890),
+(67, 88901255, 'José Antonio López', 'jose.antonio.lopez@mail.com', 'Calle Mayor 456', 'Murcia', 600445901),
+(68, 99012366, 'Marta Sánchez', 'marta.sanchez@mail.com', 'Calle Real 789', 'Malaga', 600556012),
+(69, 10113477, 'Juan Gómez', 'juan.gomez@mail.com', 'Calle del Mar 321', 'Alicante', 600667123),
+(70, 11224588, 'Esteban Ruiz', 'esteban.ruiz@mail.com', 'Calle de la Paz 987', 'Córdoba', 600778234),
+(71, 22335699, 'José Martínez', 'jose.martinez@mail.com', 'Avenida Libertad 123', 'Madrid', 600889345),
+(72, 33446700, 'Laura González', 'laura.gonzalez@mail.com', 'Calle del Sol 789', 'Barcelona', 600990456),
+(73, 44557811, 'Carlos Pérez', 'carlos.perez@mail.com', 'Calle Río 258', 'Valencia', 600112567),
+(74, 55668922, 'Alba López', 'alba.lopez@mail.com', 'Plaza del Sol 654', 'Sevilla', 600223678),
+(75, 66779033, 'David Sánchez', 'david.sanchez@mail.com', 'Avenida del Sol 123', 'Bilbao', 600334789),
+(76, 77890144, 'José Antonio Fernández', 'jose.antonio.fernandez@mail.com', 'Plaza Central 789', 'Zaragoza', 600445890),
+(77, 88901255, 'Carmen Díaz', 'carmen.diaz@mail.com', 'Calle Real 321', 'Murcia', 600556901),
+(78, 99012366, 'Esther López', 'esther.lopez@mail.com', 'Avenida Libertad 654', 'Malaga', 600667012),
+(79, 10113477, 'Pedro Sánchez', 'pedro.sanchez@mail.com', 'Calle 1 123', 'Alicante', 600778123),
+(80, 11224588, 'Juan Romero', 'juan.romero@mail.com', 'Plaza Mayor 456', 'Córdoba', 600889234),
+(81, 22335699, 'Patricia Fernández', 'patricia.fernandez@mail.com', 'Calle del Sol 789', 'Madrid', 600990345),
+(82, 33446700, 'Carlos Ruiz', 'carlos.ruiz@mail.com', 'Avenida del Sol 123', 'Barcelona', 600112456),
+(83, 44557811, 'Miguel Gómez', 'miguel.gomez@mail.com', 'Calle Río 258', 'Valencia', 600223567),
+(84, 55668922, 'Carmen Pérez', 'carmen.perez@mail.com', 'Plaza Central 654', 'Sevilla', 600334678),
+(85, 66779033, 'Antonio Sánchez', 'antonio.sanchez@mail.com', 'Calle de la Paz 987', 'Bilbao', 600445789),
+(86, 77890144, 'Sandra Martín', 'sandra.martin@mail.com', 'Calle Real 321', 'Zaragoza', 600556890),
+(87, 88901255, 'Beatriz Gómez', 'beatriz.gomez@mail.com', 'Calle Mayor 456', 'Murcia', 600667901),
+(88, 99012366, 'Alba Romero', 'alba.romero@mail.com', 'Avenida Libertad 123', 'Malaga', 600778012),
+(89, 10113477, 'José González', 'jose.gonzalez@mail.com', 'Calle del Mar 321', 'Alicante', 600889123),
+(90, 11224588, 'Laura Fernández', 'laura.fernandez@mail.com', 'Calle Real 789', 'Córdoba', 600990234),
+(91, 22335699, 'Raúl Pérez', 'raul.perez@mail.com', 'Avenida de la Paz 654', 'Madrid', 600112345),
+(92, 33446700, 'Esteban Sánchez', 'esteban.sanchez@mail.com', 'Calle del Sol 321', 'Barcelona', 600223456),
+(93, 44557811, 'David Romero', 'david.romero@mail.com', 'Plaza Mayor 456', 'Valencia', 600334567),
+(94, 55668922, 'Patricia González', 'patricia.gonzalez@mail.com', 'Calle Río 258', 'Sevilla', 600445678),
+(95, 66779033, 'Antonio Pérez', 'antonio.perez@mail.com', 'Calle Luna 123', 'Bilbao', 600556789),
+(96, 77890144, 'Carmen Díaz', 'carmen.diaz@mail.com', 'Calle del Sol 789', 'Zaragoza', 600667890),
+(97, 88901255, 'José Antonio Romero', 'jose.antonio.romero@mail.com', 'Avenida de la Paz 123', 'Murcia', 600778901),
+(98, 99012366, 'Sandra González', 'sandra.gonzalez@mail.com', 'Plaza Mayor 789', 'Malaga', 600889012),
+(99, 10113477, 'Juan López', 'juan.lopez@mail.com', 'Calle Central 456', 'Alicante', 600990123),
+(100, 11224588, 'Beatriz Romero', 'beatriz.romero@mail.com', 'Calle Luna 321', 'Córdoba', 600112234);
 
 INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES
-(1, 123456789, 'Juan', 'Pérez', 3214616890, 'juan.perez@email.com', 'Medellín', 1),
-(2, 987654321, 'Ana', 'Gómez', 3122222222, 'ana.gomez@email.com', 'Bogotá', 2),
-(3, 456123789, 'Carlos', 'López', 3133333333, 'carlos.lopez@email.com', 'Cali', 1),
-(4, 321654987, 'María', 'Martínez', 3144444444, 'maria.martinez@email.com', 'Barranquilla', 3),
-(5, 951753852, 'Luis', 'Hernández', 3155555555, 'luis.hernandez@email.com', 'Cartagena', 2),
-(6, 258963147, 'Laura', 'Torres', 3166666666, 'laura.torres@email.com', 'Bucaramanga', 4),
-(7, 789456123, 'Jorge', 'Ramírez', 3177777777, 'jorge.ramirez@email.com', 'Cúcuta', 1),
-(8, 123789456, 'Elena', 'Rojas', 3188888888, 'elena.rojas@email.com', 'Santa Marta', 3),
-(9, 456789123, 'Pedro', 'García', 3199999999, 'pedro.garcia@email.com', 'Pereira', 4),
-(10, 147258369, 'Sandra', 'Vásquez', 3200000000, 'sandra.vasquez@email.com', 'Manizales', 2),
-(11, 258147369, 'Andrés', 'Salazar', 3211111111, 'andres.salazar@email.com', 'Villavicencio', 1),
-(12, 369258147, 'Sofía', 'Córdoba', 3222222222, 'sofia.cordoba@email.com', 'Neiva', 3),
-(13, 753159486, 'Diego', 'Luna', 3233333333, 'diego.luna@email.com', 'Ibagué', 4),
-(14, 951852753, 'Felipe', 'Alvarez', 3244444444, 'felipe.alvarez@email.com', 'Tunja', 1),
-(15, 147369258, 'Nicole', 'Pineda', 3255555555, 'nicole.pineda@email.com', 'Armenia', 2),
-(16, 258369147, 'Valentina', 'Sarmiento', 3266666666, 'valentina.sarmiento@email.com', 'Quibdó', 3),
-(17, 753258168, 'David', 'Mendoza', 3277777777, 'david.mendoza@email.com', 'Palmira', 1),
-(18, 159753486, 'Adriana', 'Velasco', 3288888888, 'adriana.velasco@email.com', 'Popayán', 4),
-(19, 258963654, 'Miguel', 'Guerrero', 3299999999, 'miguel.guerrero@email.com', 'Sincelejo', 2),
-(20, 951862473, 'Camila', 'Bermúdez', 3300000000, 'camila.bermudez@email.com', 'Montería', 3),
-(21, 333444555, 'Sebastián', 'Cáceres', 3112345678, 'sebastian.caceres@email.com', 'Cali', 1),
-(22, 444555666, 'Isabella', 'Pérez', 3123456789, 'isabella.perez@email.com', 'Medellín', 2),
-(23, 555666777, 'Felipe', 'Diaz', 3134567890, 'felipe.diaz@email.com', 'Bogotá', 1),
-(24, 666777888, 'Santiago', 'Hernandez', 3145678901, 'santiago.hernandez@email.com', 'Cartagena', 3),
-(25, 777888999, 'Catalina', 'Mora', 3156789012, 'catalina.mora@email.com', 'Barranquilla', 2),
-(26, 888999000, 'Alejandro', 'Salas', 3167890123, 'alejandro.salas@email.com', 'Cúcuta', 4),
-(27, 999000111, 'Victoria', 'Pacheco', 3178901234, 'victoria.pacheco@email.com', 'Santa Marta', 1),
-(28, 000111222, 'Oscar', 'Escobar', 3189012345, 'oscar.escobar@email.com', 'Popayán', 2),
-(29, 111222333, 'Sofia', 'Sosa', 3190123456, 'sofia.sosa@email.com', 'Bucaramanga', 3),
-(30, 222333444, 'Aaron', 'Guitierrez', 3201234567, 'aaron.guitierrez@email.com', 'Ibagué', 4),
-(31, 333444555, 'Lina', 'Quintero', 3212345678, 'lina.quintero@email.com', 'Manizales', 1),
-(32, 444555666, 'Natalia', 'Mendez', 3223456789, 'natalia.mendez@email.com', 'Tunja', 2),
-(33, 555666777, 'Martin', 'Bermudez', 3234567890, 'martin.bermudez@email.com', 'Neiva', 3),
-(34, 666777888, 'Melissa', 'Vega', 3245678901, 'melissa.vega@email.com', 'Cartagena', 4),
-(35, 777888999, 'Fernando', 'Casas', 3256789012, 'fernando.casas@email.com', 'Cali', 1),
-(36, 888999000, 'Eduardo', 'Taborda', 3267890123, 'eduardo.taborda@email.com', 'Medellín', 2),
-(37, 999000111, 'Alicia', 'Quiñones', 3278901234, 'alicia.quinones@email.com', 'Bogotá', 3),
-(38, 000111222, 'Roberto', 'Loera', 3289012345, 'roberto.loera@email.com', 'Cúcuta', 4),
-(39, 111222333, 'Juliana', 'Romero', 3290123456, 'juliana.romero@email.com', 'Barranquilla', 1),
-(40, 222333444, 'Humberto', 'Ceballos', 3301234567, 'humberto.ceballos@email.com', 'Armenia', 2),
-(41, 555666777, 'César', 'Velandia', 3312345678, 'cesar.velandia@email.com', 'Cúcuta', 3),
-(42, 666777888, 'Paola', 'Jaramillo', 3323456789, 'paola.jaramillo@email.com', 'Cartagena', 4),
-(43, 777888999, 'Álvaro', 'Bolaños', 3334567890, 'alvaro.bolanos@email.com', 'Bucaramanga', 1),
-(44, 888999000, 'Estefanía', 'Salazar', 3345678901, 'estefania.salazar@email.com', 'Tunja', 2),
-(45, 999000111, 'Ángela', 'Ospina', 3356789012, 'angela.ospina@email.com', 'Neiva', 3),
-(46, 000111222, 'Pablo', 'Gómez', 3367890123, 'pablo.gomez@email.com', 'Ibagué', 4),
-(47, 111222333, 'Luz', 'Fernández', 3378901234, 'luz.fernandez@email.com', 'Manizales', 1),
-(48, 222333444, 'Ramón', 'Córdoba', 3389012345, 'ramon.cordoba@email.com', 'Santa Marta', 2),
-(49, 333444555, 'Diana', 'Gutiérrez', 3390123456, 'diana.gutierrez@email.com', 'Cali', 3),
-(50, 444555666, 'Jesus', 'Salguero', 3401234567, 'jesus.salguero@email.com', 'Medellín', 4);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (51, 123456789, 'Juan', 'Pérez', '3012345678', 'juan.perez@example.com', 'Medellín', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (52, 987654321, 'María', 'Gomez', '3023456789', 'maria.gomez@example.com', 'Bogotá', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (53, 456789123, 'Carlos', 'Fernández', '3034567890', 'carlos.fernandez@example.com', 'Cali', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (54, 321654987, 'Laura', 'Martínez', '3045678901', 'laura.martinez@example.com', 'Barranquilla', 3);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (55, 654321789, 'José', 'Rodríguez', '3056789012', 'jose.rodriguez@example.com', 'Cartagena', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (56, 123456123, 'Ana', 'Ramírez', '3067890123', 'ana.ramirez@example.com', 'Bucaramanga', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (57, 789456123, 'Luis', 'Hernández', '3078901234', 'luis.hernandez@example.com', 'Pereira', 3);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (58, 159753456, 'Sofía', 'Ceballos', '3089012345', 'sofia.ceballos@example.com', 'Cúcuta', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (59, 753159864, 'Diego', 'Garcia', '3090123456', 'diego.garcia@example.com', 'Ibagué', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (60, 321987654, 'Ricardo', 'Vásquez', '3012345679', 'ricardo.vasquez@example.com', 'Neiva', 3);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (61, 963852741, 'Natalia', 'Jiménez', '3023456780', 'natalia.jimenez@example.com', 'Santa Marta', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (62, 741258963, 'Andrés', 'Salazar', '3034567891', 'andres.salazar@example.com', 'Montería', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (63, 852963147, 'Lorena', 'Pineda', '3045678902', 'lorena.pineda@example.com', 'Tuluá', 3);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (64, 159357486, 'Victor', 'Mora', '3056789013', 'victor.mora@example.com', 'Armenia', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (65, 753951852, 'Fabiola', 'Alvarez', '3067890124', 'fabiola.alvarez@example.com', 'Valledupar', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (66, 258456789, 'Esteban', 'Correa', '3078901235', 'esteban.correa@example.com', 'Riohacha', 3);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (67, 369852147, 'Patricia', 'Cortés', '3089012346', 'patricia.cortes@example.com', 'Sincelejo', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (68, 852147963, 'Fabiana', 'Quintero', '3090123457', 'fabiana.quintero@example.com', 'Manizales', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (69, 741236985, 'Hugo', 'Salamanca', '3012346780', 'hugo.salamanca@example.com', 'Tunja', 3);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (70, 159753852, 'Susana', 'Bermúdez', '3023457891', 'susana.bermudez@example.com', 'Popayán', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (71, 123456987, 'Nicolas', 'Hernández', '3034567901', 'nicolas.hernandez@example.com', 'Bello', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (72, 654321564, 'Gustavo', 'Tovar', '3045678912', 'gustavo.tovar@example.com', 'Villavicencio', 3);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (73, 456987321, 'Verónica', 'Cáceres', '3056789023', 'veronica.caceres@example.com', 'Cali', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (74, 852369741, 'Anderson', 'Balaguera', '3067890134', 'anderson.balaguera@example.com', 'Barranquilla', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (75, 963258741, 'Sandra', 'González', '3078901245', 'sandra.gonzalez@example.com', 'Cúcuta', 3);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (76, 753159753, 'Óscar', 'Bermúdez', '3089012356', 'oscar.bermudez@example.com', 'Cartagena', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (77, 321654987, 'Gabriela', 'Maldonado', '3090123467', 'gabriela.maldonado@example.com', 'Pereira', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (78, 654987321, 'Santiago', 'Quintero', '3012345670', 'santiago.quintero@example.com', 'Tuluá', 3);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (79, 789123654, 'Adriana', 'Rojas', '3023456781', 'adriana.rojas@example.com', 'Manizales', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (80, 258963147, 'Felipe', 'Aparicio', '3034567892', 'felipe.aparicio@example.com', 'Neiva', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (81, 369147258, 'Claudia', 'Morrison', '3045678903', 'claudia.morrison@example.com', 'Cartagena', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (82, 951257468, 'Alejandro', 'Murillo', '3056789014', 'alejandro.murillo@example.com', 'Valledupar', 3);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (83, 852369654, 'Vanessa', 'Aguirre', '3067890125', 'vanessa.aguirre@example.com', 'Cúcuta', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (84, 741258951, 'Laura', 'Álvarez', '3078901236', 'laura.alvarez@example.com', 'Bucaramanga', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (85, 963147258, 'David', 'Martinez', '3089012347', 'david.martinez@example.com', 'Popayán', 3);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (86, 951753852, 'Luisa', 'Sutela', '3090123458', 'luisa.sutela@example.com', 'Ibagué', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (87, 147258963, 'Henry', 'Torres', '3012346789', 'henry.torres@example.com', 'Santa Marta', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (88, 258147963, 'Karla', 'Hernandez', '3023457890', 'karla.hernandez@example.com', 'Montería', 3);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (89, 369456123, 'Patricio', 'Canas', '3034568901', 'patricio.canas@example.com', 'Cali', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (90, 753753951, 'Adriana', 'Delgado', '3045678912', 'adriana.delgado@example.com', 'Bello', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (91, 951159753, 'Samuel', 'Sanchez', '3056789023', 'samuel.sanchez@example.com', 'Cúcuta', 3);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (92, 753951258, 'Martin', 'Barrientos', '3067890124', 'martin.barrientos@example.com', 'Tuluá', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (93, 159852741, 'Nora', 'Tovar', '3078901235', 'nora.tovar@example.com', 'Barranquilla', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (94, 951357852, 'Lucas', 'López', '3089012346', 'lucas.lopez@example.com', 'Manizales', 3);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (95, 753258159, 'Raquel', 'Pérez', '3090123457', 'raquel.perez@example.com', 'Valledupar', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (96, 123369258, 'Emilio', 'Córdoba', '3012346780', 'emilio.cordoba@example.com', 'Neiva', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (97, 654123789, 'Martina', 'Jiménez', '3023457891', 'martina.jimenez@example.com', 'Santa Marta', 3);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (98, 258963789, 'Miguel', 'Alonso', '3034568902', 'miguel.alonso@example.com', 'Cúcuta', 1);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (99, 753159456, 'Bianca', 'Ramos', '3045679013', 'bianca.ramos@example.com', 'Bello', 2);
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, correo_electronico, ciudad_residencia, id_sucursal) VALUES (100, 456123789, 'Gina', 'Martinez', '3056780124', 'gina.martinez@example.com', 'Tuluá', 3);
+(1, 101234567, 'Carlos', 'González', '3001234567', 'carlos.gonzalez@empresa.com', 'Bogotá', 1),
+(2, 102345678, 'Ana', 'Martínez', '3002345678', 'ana.martinez@empresa.com', 'Medellín', 2),
+(3, 103456789, 'Luis', 'Pérez', '3003456789', 'luis.perez@empresa.com', 'Cali', 3),
+(4, 104567890, 'Marta', 'Rodríguez', '3004567890', 'marta.rodriguez@empresa.com', 'Barranquilla', 1),
+(5, 105678901, 'Pedro', 'Ramírez', '3005678901', 'pedro.ramirez@empresa.com', 'Cartagena', 2),
+(6, 106789012, 'Laura', 'Hernández', '3006789012', 'laura.hernandez@empresa.com', 'Bucaramanga', 3),
+(7, 107890123, 'José', 'López', '3007890123', 'jose.lopez@empresa.com', 'Pereira', 1),
+(8, 108901234, 'Sofía', 'Gómez', '3008901234', 'sofia.gomez@empresa.com', 'Santa Marta', 2),
+(9, 109012345, 'Ricardo', 'Díaz', '3009012345', 'ricardo.diaz@empresa.com', 'Cúcuta', 3),
+(10, 110123456, 'Isabel', 'Fernández', '3000123456', 'isabel.fernandez@empresa.com', 'Armenia', 1),
+(11, 111234567, 'David', 'Martínez', '3011234567', 'david.martinez@empresa.com', 'Ibagué', 2),
+(12, 112345678, 'Raquel', 'Vásquez', '3012345678', 'raquel.vasquez@empresa.com', 'Neiva', 3),
+(13, 113456789, 'Andrés', 'Castro', '3013456789', 'andres.castro@empresa.com', 'Manizales', 1),
+(14, 114567890, 'Patricia', 'Sánchez', '3014567890', 'patricia.sanchez@empresa.com', 'Pasto', 2),
+(15, 115678901, 'Ricardo', 'Gómez', '3015678901', 'ricardo.gomez@empresa.com', 'Tunja', 3),
+(16, 116789012, 'Beatriz', 'Torres', '3016789012', 'beatriz.torres@empresa.com', 'Villavicencio', 1),
+(17, 117890123, 'Eugenio', 'Moreno', '3017890123', 'eugenio.moreno@empresa.com', 'Quibdó', 2),
+(18, 118901234, 'Julia', 'Hernández', '3018901234', 'julia.hernandez@empresa.com', 'Popayán', 3),
+(19, 119012345, 'Oscar', 'Ramírez', '3019012345', 'oscar.ramirez@empresa.com', 'Riohacha', 1),
+(20, 120123456, 'Carolina', 'Salazar', '3020123456', 'carolina.salazar@empresa.com', 'Pereira', 2),
+(21, 121234567, 'Mónica', 'González', '3021234567', 'monica.gonzalez@empresa.com', 'Bucaramanga', 3),
+(22, 122345678, 'Fernando', 'Gómez', '3022345678', 'fernando.gomez@empresa.com', 'Medellín', 1),
+(23, 123456789, 'Sandra', 'Lopez', '3023456789', 'sandra.lopez@empresa.com', 'Cali', 2),
+(24, 124567890, 'Álvaro', 'Pérez', '3024567890', 'alvaro.perez@empresa.com', 'Barranquilla', 3),
+(25, 125678901, 'Juan', 'Hernández', '3025678901', 'juan.hernandez@empresa.com', 'Cartagena', 1),
+(26, 126789012, 'Gloria', 'Martínez', '3026789012', 'gloria.martinez@empresa.com', 'Bogotá', 2),
+(27, 127890123, 'Carlos', 'Rodríguez', '3027890123', 'carlos.rodriguez@empresa.com', 'Medellín', 3),
+(28, 128901234, 'Elsa', 'Sánchez', '3028901234', 'elsa.sanchez@empresa.com', 'Cali', 1),
+(29, 129012345, 'Victor', 'Ramírez', '3029012345', 'victor.ramirez@empresa.com', 'Barranquilla', 2),
+(30, 130123456, 'Martín', 'Torres', '3030123456', 'martin.torres@empresa.com', 'Santa Marta', 3),
+(31, 131234567, 'José', 'Díaz', '3031234567', 'jose.diaz@empresa.com', 'Pereira', 1),
+(32, 132345678, 'Rocío', 'López', '3032345678', 'rocio.lopez@empresa.com', 'Tunja', 2),
+(33, 133456789, 'Daniela', 'Pérez', '3033456789', 'daniela.perez@empresa.com', 'Manizales', 3),
+(34, 134567890, 'José', 'Martínez', '3034567890', 'jose.martinez@empresa.com', 'Neiva', 1),
+(35, 135678901, 'Miriam', 'Gómez', '3035678901', 'miriam.gomez@empresa.com', 'Popayán', 2),
+(36, 136789012, 'Carlos', 'González', '3036789012', 'carlos.gonzalez@empresa.com', 'Ibagué', 3),
+(37, 137890123, 'Patricia', 'Ramírez', '3037890123', 'patricia.ramirez@empresa.com', 'Cúcuta', 1),
+(38, 138901234, 'Antonio', 'Rodríguez', '3038901234', 'antonio.rodriguez@empresa.com', 'Cartagena', 2),
+(39, 139012345, 'Claudia', 'Vásquez', '3039012345', 'claudia.vasquez@empresa.com', 'Villavicencio', 3),
+(40, 140123456, 'Jorge', 'Castro', '3040123456', 'jorge.castro@empresa.com', 'Santa Marta', 1),
+(41, 141234567, 'Mariana', 'Martínez', '3041234567', 'mariana.martinez@empresa.com', 'Pasto', 2),
+(42, 142345678, 'Felipe', 'Gómez', '3042345678', 'felipe.gomez@empresa.com', 'Pereira', 3),
+(43, 143456789, 'Juliana', 'Hernández', '3043456789', 'juliana.hernandez@empresa.com', 'Neiva', 1),
+(44, 144567890, 'Daniel', 'López', '3044567890', 'daniel.lopez@empresa.com', 'Bucaramanga', 2),
+(45, 145678901, 'Elena', 'Sánchez', '3045678901', 'elena.sanchez@empresa.com', 'Cali', 3),
+(46, 146789012, 'Marcos', 'Ramírez', '3046789012', 'marcos.ramirez@empresa.com', 'Barranquilla', 1),
+(47, 147890123, 'Julia', 'Vásquez', '3047890123', 'julia.vasquez@empresa.com', 'Medellín', 2),
+(48, 148901234, 'Carlos', 'Martínez', '3048901234', 'carlos.martinez@empresa.com', 'Popayán', 3),
+(49, 149012345, 'Verónica', 'Sánchez', '3049012345', 'veronica.sanchez@empresa.com', 'Cúcuta', 1),
+(50, 150123456, 'Santiago', 'Torres', '3050123456', 'santiago.torres@empresa.com', 'Bucaramanga', 2),
+(51, 151234567, 'Lucía', 'Ramírez', '3051234567', 'lucia.ramirez@empresa.com', 'Medellín', 3),
+(52, 152345678, 'Pablo', 'Pérez', '3052345678', 'pablo.perez@empresa.com', 'Bogotá', 1),
+(53, 153456789, 'Gabriela', 'González', '3053456789', 'gabriela.gonzalez@empresa.com', 'Ibagué', 2),
+(54, 154567890, 'José', 'Hernández', '3054567890', 'jose.hernandez@empresa.com', 'Cúcuta', 3),
+(55, 155678901, 'Raúl', 'Gómez', '3055678901', 'raul.gomez@empresa.com', 'Villavicencio', 1),
+(56, 156789012, 'Lina', 'Rodríguez', '3056789012', 'lina.rodriguez@empresa.com', 'Cali', 2),
+(57, 157890123, 'Carlos', 'Pérez', '3057890123', 'carlos.perez@empresa.com', 'Medellín', 3),
+(58, 158901234, 'Ricardo', 'Castro', '3058901234', 'ricardo.castro@empresa.com', 'Santa Marta', 1),
+(59, 159012345, 'Mónica', 'González', '3059012345', 'monica.gonzalez@empresa.com', 'Popayán', 2),
+(60, 160123456, 'José', 'Sánchez', '3060123456', 'jose.sanchez@empresa.com', 'Cali', 3),
+(61, 161234567, 'Patricia', 'Gómez', '3061234567', 'patricia.gomez@empresa.com', 'Neiva', 1),
+(62, 162345678, 'Luis', 'Vásquez', '3062345678', 'luis.vasquez@empresa.com', 'Medellín', 2),
+(63, 163456789, 'Andrea', 'Torres', '3063456789', 'andrea.torres@empresa.com', 'Barranquilla', 3),
+(64, 164567890, 'Marta', 'Martínez', '3064567890', 'marta.martinez@empresa.com', 'Popayán', 1),
+(65, 165678901, 'Carlos', 'Castro', '3065678901', 'carlos.castro@empresa.com', 'Cúcuta', 2),
+(66, 166789012, 'Javier', 'Ramírez', '3066789012', 'javier.ramirez@empresa.com', 'Santa Marta', 3),
+(67, 167890123, 'Rosa', 'González', '3067890123', 'rosa.gonzalez@empresa.com', 'Bucaramanga', 1),
+(68, 168901234, 'Antonio', 'Martínez', '3068901234', 'antonio.martinez@empresa.com', 'Barranquilla', 2),
+(69, 169012345, 'Sofía', 'Hernández', '3069012345', 'sofia.hernandez@empresa.com', 'Medellín', 3),
+(70, 170123456, 'Gerardo', 'López', '3070123456', 'gerardo.lopez@empresa.com', 'Pasto', 1),
+(71, 171234567, 'Elena', 'Gómez', '3071234567', 'elena.gomez@empresa.com', 'Villavicencio', 2),
+(72, 172345678, 'Mónica', 'Pérez', '3072345678', 'monica.perez@empresa.com', 'Medellín', 3),
+(73, 173456789, 'Carlos', 'Sánchez', '3073456789', 'carlos.sanchez@empresa.com', 'Ibagué', 1),
+(74, 174567890, 'Lucía', 'Martínez', '3074567890', 'lucia.martinez@empresa.com', 'Pereira', 2),
+(75, 175678901, 'Sandra', 'Ramírez', '3075678901', 'sandra.ramirez@empresa.com', 'Santa Marta', 3),
+(76, 176789012, 'David', 'Torres', '3076789012', 'david.torres@empresa.com', 'Manizales', 1),
+(77, 177890123, 'Oscar', 'Vásquez', '3077890123', 'oscar.vasquez@empresa.com', 'Cartagena', 2),
+(78, 178901234, 'Julia', 'López', '3078901234', 'julia.lopez@empresa.com', 'Tunja', 3),
+(79, 179012345, 'Héctor', 'Rodríguez', '3079012345', 'hector.rodriguez@empresa.com', 'Popayán', 1),
+(80, 180123456, 'Carlos', 'Ramírez', '3080123456', 'carlos.ramirez@empresa.com', 'Bucaramanga', 2),
+(81, 181234567, 'Patricia', 'González', '3081234567', 'patricia.gonzalez@empresa.com', 'Medellín', 3),
+(82, 182345678, 'Eduardo', 'Martínez', '3082345678', 'eduardo.martinez@empresa.com', 'Villavicencio', 1),
+(83, 183456789, 'Margarita', 'Torres', '3083456789', 'margarita.torres@empresa.com', 'Barranquilla', 2),
+(84, 184567890, 'Raúl', 'Sánchez', '3084567890', 'raul.sanchez@empresa.com', 'Pasto', 3),
+(85, 185678901, 'Juliana', 'Rodríguez', '3085678901', 'juliana.rodriguez@empresa.com', 'Manizales', 1),
+(86, 186789012, 'Felipe', 'Pérez', '3086789012', 'felipe.perez@empresa.com', 'Pereira', 2),
+(87, 187890123, 'Ricardo', 'López', '3087890123', 'ricardo.lopez@empresa.com', 'Medellín', 3),
+(88, 188901234, 'Carolina', 'Sánchez', '3088901234', 'carolina.sanchez@empresa.com', 'Popayán', 1),
+(89, 189012345, 'Carlos', 'Torres', '3089012345', 'carlos.torres@empresa.com', 'Cúcuta', 2),
+(90, 190123456, 'Marta', 'Gómez', '3090123456', 'marta.gomez@empresa.com', 'Barranquilla', 3),
+(91, 191234567, 'Jorge', 'Martínez', '3091234567', 'jorge.martinez@empresa.com', 'Ibagué', 1),
+(92, 192345678, 'María', 'Pérez', '3092345678', 'maria.perez@empresa.com', 'Medellín', 2),
+(93, 193456789, 'Héctor', 'González', '3093456789', 'hector.gonzalez@empresa.com', 'Popayán', 3),
+(94, 194567890, 'Ana', 'Vásquez', '3094567890', 'ana.vasquez@empresa.com', 'Santa Marta', 1),
+(95, 195678901, 'Luis', 'Rodríguez', '3095678901', 'luis.rodriguez@empresa.com', 'Neiva', 2),
+(96, 196789012, 'Sofía', 'Sánchez', '3096789012', 'sofia.sanchez@empresa.com', 'Cali', 3),
+(97, 197890123, 'Ricardo', 'Martínez', '3097890123', 'ricardo.martinez@empresa.com', 'Medellín', 1),
+(98, 198901234, 'Carlos', 'Pérez', '3098901234', 'carlos.perez@empresa.com', 'Popayán', 2),
+(99, 199012345, 'Margarita', 'López', '3099012345', 'margarita.lopez@empresa.com', 'Barranquilla', 3),
+(100, 200123456, 'Fernando', 'Hernández', '3100123456', 'fernando.hernandez@empresa.com', 'Bucaramanga', 1);
+
 
 
 INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES
-(51, 'ABC-123', 'Sedán', 'Model S', 4, 5, 'Sí', 'Eléctrico', 'Negro'),
-(52, 'DEF-456', 'SUV', 'Model X', 4, 7, 'Sí', 'Eléctrico', 'Blanco'),
-(53, 'GHI-789', 'Compacto', 'Civic', 4, 5, 'No', 'Gasolina', 'Rojo'),
-(54, 'JKL-012', 'Pick-up', 'F-150', 2, 3, 'No', 'Gasolina', 'Azul'),
-(55, 'MNO-345', 'Deportivo', 'Mustang', 2, 4, 'No', 'Gasolina', 'Amarillo'),
-(56, 'PQR-678', 'SUV', 'Explorer', 4, 7, 'Sí', 'Gasolina', 'Verde'),
-(57, 'STU-901', 'Sedán', 'Camry', 4, 5, 'No', 'Híbrido', 'Gris'),
-(58, 'VWX-234', 'Van', 'Odyssey', 4, 8, 'Sí', 'Gasolina', 'Naranja'),
-(59, 'YZA-567', 'Híbrido', 'Prius', 4, 5, 'No', 'Híbrido', 'Platino'),
-(60, 'BCD-890', 'Compacto', 'Mazda 3', 4, 5, 'No', 'Gasolina', 'Vino'),
-(61, 'EFG-123', 'SUV', 'Q5', 4, 5, 'Sí', 'Gasolina', 'Negro'),
-(62, 'HIJ-456', 'Sedán', 'Accord', 4, 5, 'No', 'Gasolina', 'Blanco'),
-(63, 'KLM-789', 'Deportivo', 'Challenger', 2, 4, 'No', 'Gasolina', 'Rojo'),
-(64, 'NOP-012', 'SUV', 'Tiguan', 4, 5, 'Sí', 'Gasolina', 'Azul'),
-(65, 'QRS-345', 'Pick-up', 'Ram 1500', 4, 6, 'No', 'Gasolina', 'Negro'),
-(66, 'TUV-678', 'SUV', 'Pathfinder', 4, 7, 'Sí', 'Gasolina', 'Rojo'),
-(67, 'WXY-901', 'Compacto', 'Focus', 4, 5, 'No', 'Gasolina', 'Verde'),
-(68, 'ZAB-234', 'Sedán', 'Elantra', 4, 5, 'No', 'Híbrido', 'Gris'),
-(69, 'CDE-567', 'Híbrido', 'Insignia', 4, 5, 'No', 'Híbrido', 'Naranja'),
-(70, 'FGH-890', 'Van', 'Sienna', 4, 8, 'Sí', 'Gasolina', 'Platino'),
-(71, 'IJK-123', 'SUV', 'RAV4', 4, 5, 'Sí', 'Gasolina', 'Azul'),
-(72, 'LMN-456', 'Sedán', 'Sonata', 4, 5, 'No', 'Gasolina', 'Rojo'),
-(73, 'OPQ-789', 'Deportivo', 'Civic Type R', 2, 4, 'No', 'Gasolina', 'Blanco'),
-(74, 'RST-012', 'Compacto', 'Corolla', 4, 5, 'No', 'Gasolina', 'Negro'),
-(75, 'UVW-345', 'SUV', 'CR-V', 4, 5, 'Sí', 'Híbrido', 'Verde'),
-(76, 'XYZ-678', 'Van', 'Transit', 4, 12, 'No', 'Gasolina', 'Naranja'),
-(77, 'ABC-901', 'SUV', 'Durango', 4, 7, 'Sí', 'Gasolina', 'Gris'),
-(78, 'DEF-234', 'Deportivo', 'Cayman', 2, 2, 'No', 'Gasolina', 'Rojo'),
-(79, 'GHI-567', 'Sedán', 'Impala', 4, 5, 'No', 'Gasolina', 'Azul'),
-(80, 'JKL-890', 'Pick-up', 'Colorado', 4, 5, 'No', 'Gasolina', 'Plata'),
-(81, 'MNO-123', 'SUV', 'Acadia', 4, 7, 'Sí', 'Gasolina', 'Negro'),
-(82, 'PQR-456', 'Compacto', 'Jetta', 4, 5, 'No', 'Gasolina', 'Verde'),
-(83, 'STU-789', 'Híbrido', 'Fusion', 4, 5, 'Sí', 'Híbrido', 'Blanco'),
-(84, 'VWX-012', 'Deportivo', 'Z4', 2, 2, 'No', 'Gasolina', 'Negro'),
-(85, 'YZA-345', 'Van', 'Caravan', 4, 7, 'Sí', 'Gasolina', 'Gris'),
-(86, 'BCD-678', 'SUV', 'Kona', 4, 5, 'No', 'Gasolina', 'Naranja'),
-(87, 'EFG-901', 'Sedán', 'Optima', 4, 5, 'No', 'Híbrido', 'Rojo'),
-(88, 'HIJ-234', 'Pick-up', 'Tacoma', 4, 5, 'Sí', 'Gasolina', 'Azul'),
-(89, 'KLM-567', 'SUV', 'Cherokee', 4, 5, 'Sí', 'Gasolina', 'Verde'),
-(90, 'NOP-890', 'Compacto', 'Soul', 4, 5, 'No', 'Gasolina', 'Amarillo'),
-(91, 'QRS-123', 'Híbrido', 'CT 200h', 4, 5, 'No', 'Híbrido', 'Platino'),
-(92, 'TUV-456', 'Deportivo', 'NSX', 2, 2, 'No', 'Gasolina', 'Rojo'),
-(93, 'WXY-789', 'SUV', 'Santa Fe', 4, 5, 'Sí', 'Gasolina', 'Blanco'),
-(94, 'ZAB-012', 'Van', 'ProMaster', 4, 10, 'No', 'Gasolina', 'Negro'),
-(95, 'CDE-345', 'Pick-up', 'Silverado', 4, 5, 'No', 'Gasolina', 'Verde'),
-(96, 'FGH-678', 'Compacto', 'Focus RS', 4, 5, 'No', 'Gasolina', 'Azul'),
-(97, 'IJK-901', 'SUV', 'Sorento', 4, 5, 'Sí', 'Gasolina', 'Rojo'),
-(98, 'LMN-234', 'Deportivo', 'Elise', 2, 2, 'No', 'Gasolina', 'Amarillo'),
-(99, 'OPQ-567', 'Sedán', 'Malibu', 4, 5, 'No', 'Gasolina', 'Gris'),
-(100, 'RST-890', 'Híbrido', 'RAV4 Hybrid', 4, 5, 'Sí', 'Híbrido', 'Blanco');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (1, 'ABC-123', 'Sedán', 'Modelo X', 4, 5, 'Sí', '2.0 Turbo', 'Rojo');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (2, 'DEF-456', 'SUV', 'Modelo Y', 4, 7, 'Sí', '3.5 V6', 'Negro');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (3, 'GHI-789', 'Camión', 'Modelo Z', 2, 3, 'No', '5.0 Diesel', 'Blanco');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (4, 'JKL-012', 'Crossover', 'Modelo A', 4, 5, 'Sí', '2.4 Hybrid', 'Gris');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (5, 'MNO-345', 'Coupe', 'Modelo B', 2, 4, 'No', '3.0 Turbo', 'Azul');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (6, 'PQR-678', 'Hatchback', 'Modelo C', 5, 5, 'Sí', '1.5 Eco', 'Verde');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (7, 'STU-901', 'Deportivo', 'Modelo D', 2, 2, 'No', '4.0 V8', 'Amarillo');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (8, 'VWX-234', 'Convertible', 'Modelo E', 2, 4, 'Sí', '3.5 V6', 'Rojo');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (9, 'YZA-567', 'Minivan', 'Modelo F', 5, 7, 'Sí', '2.8 Diesel', 'Blanco');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (20, 'BCD-890', 'Pick-up', 'Modelo G', 4, 5, 'No', '4.5 Diesel', 'Negro');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (11, 'EFG-123', 'SUV', 'Modelo H', 4, 5, 'Sí', '2.0 Turbo', 'Naranja');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (12, 'HIJ-456', 'Sedán', 'Modelo I', 4, 5, 'No', '1.8 Natural', 'Marrón');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (13, 'KLM-789', 'Crossover', 'Modelo J', 5, 7, 'Sí', '2.5 Hybrid', 'Plateado');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (14, 'NOP-012', 'Coupe', 'Modelo K', 2, 4, 'No', '3.2 V6', 'Vino');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (15, 'QRS-345', 'Hatchback', 'Modelo L', 5, 5, 'Sí', '1.5 Turbo', 'Turquesa');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (16, 'TUV-678', 'Deportivo', 'Modelo M', 2, 2, 'No', '4.2 Turbo', 'Fucsia');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (17, 'WXY-901', 'Convertible', 'Modelo N', 2, 4, 'Sí', '3.8 V8', 'Beige');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (18, 'ZAB-234', 'Minivan', 'Modelo O', 5, 7, 'No', '2.4 Natural', 'Azul Marino');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (19, 'CDE-567', 'Pick-up', 'Modelo P', 4, 5, 'Sí', '5.3 V8', 'Gris Claro');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (10, 'FGH-890', 'SUV', 'Modelo Q', 4, 5, 'Sí', '3.0 Diesel', 'Plata');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (21, 'IJK-123', 'Sedán', 'Modelo R', 4, 5, 'No', '2.2 Natural', 'Negro Mate');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (22, 'LMN-456', 'Crossover', 'Modelo S', 5, 7, 'Sí', '2.5 Turbo', 'Marfil');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (23, 'OPQ-789', 'Coupe', 'Modelo T', 2, 4, 'No', '3.5 V6', 'Rojo Intenso');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (24, 'RST-012', 'Hatchback', 'Modelo U', 5, 5, 'Sí', '1.6 Natural', 'Azul Cielo');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (25, 'UVW-345', 'Deportivo', 'Modelo V', 2, 2, 'No', '4.0 Turbo', 'Negro Charcoal');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (26, 'XYZ-678', 'Convertible', 'Modelo W', 2, 4, 'Sí', '3.7 V6', 'Dorado');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (27, 'ABC-890', 'Minivan', 'Modelo X', 5, 7, 'No', '2.6 Diesel', 'Gris Oscuro');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (28, 'DEF-012', 'Pick-up', 'Modelo Y', 4, 5, 'Sí', '5.0 Diesel', 'Rojo Brillante');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (29, 'GHI-345', 'SUV', 'Modelo Z', 4, 5, 'Sí', '3.1 Turbo', 'Negro Metálico');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (30, 'JKL-678', 'Sedán', 'Modelo A', 4, 5, 'No', '2.3 Natural', 'Verde Oliva');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (31, 'MNO-901', 'Crossover', 'Modelo B', 5, 7, 'Sí', '2.2 Diesel', 'Plateado');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (32, 'PQR-234', 'Coupe', 'Modelo C', 2, 4, 'No', '3.0 V8', 'Amarillo Lima');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (33, 'STU-567', 'Hatchback', 'Modelo D', 5, 5, 'Sí', '1.4 Turbo', 'Marrón Claro');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (34, 'VWX-890', 'Deportivo', 'Modelo E', 2, 2, 'No', '5.0 V8', 'Blanco Perla');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (35, 'YZA-123', 'Convertible', 'Modelo F', 2, 4, 'Sí', '4.2 V6', 'Rojo Ferrari');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (36, 'BCD-456', 'Minivan', 'Modelo G', 5, 7, 'No', '2.5 Natural', 'Azul Pastel');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (37, 'EFG-789', 'Pick-up', 'Modelo H', 4, 5, 'Sí', '4.6 Diesel', 'Negro Raven');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (38, 'HIJ-012', 'SUV', 'Modelo I', 4, 5, 'Sí', '3.4 Turbo', 'Verde Espinado');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (39, 'KLM-345', 'Sedán', 'Modelo J', 4, 5, 'No', '2.1 Turbo', 'Turquesa Claro');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (40, 'NOP-678', 'Crossover', 'Modelo K', 5, 7, 'Sí', '2.3 Diesel', 'Plata Brillante');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (41, 'QRS-901', 'Coupe', 'Modelo L', 2, 4, 'No', '3.6 V6', 'Granate');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (42, 'TUV-234', 'Hatchback', 'Modelo M', 5, 5, 'Sí', '1.7 Turbo', 'Beige Claro');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (43, 'UVW-567', 'Deportivo', 'Modelo N', 2, 2, 'No', '4.1 V8', 'Naranja Brillante');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (44, 'XYZ-890', 'Convertible', 'Modelo O', 2, 4, 'Sí', '3.9 V6', 'Negro Nuclear');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (45, 'ABC-123', 'Minivan', 'Modelo P', 5, 7, 'No', '2.4 Diesel', 'Rojo Rubí');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (46, 'DEF-456', 'Pick-up', 'Modelo Q', 4, 5, 'Sí', '5.1 Diesel', 'Azul Cielo Claro');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (47, 'GHI-789', 'SUV', 'Modelo R', 4, 5, 'Sí', '2.8 Natural', 'Gris Rayo');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (48, 'JKL-012', 'Sedán', 'Modelo S', 4, 5, 'No', '2.0 Turbo', 'Mostaza');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (49, 'MNO-345', 'Crossover', 'Modelo T', 5, 7, 'Sí', '2.5 Diesel', 'Cristal');
-INSERT INTO vehiculos (id, placa, tipo_vehiculo, modelo, puertas, capacidad, sunroof, motor, color) VALUES (50, 'PQR-678', 'Coupe', 'Modelo U', 2, 4, 'No', '3.4 V6', 'Meta');
+(1, 'ABC1234', 'Sedán', 'Toyota Corolla', 4, 5, 'Sí', '1.8L', 'Negro'),
+(2, 'DEF5678', 'SUV', 'Honda CR-V', 5, 7, 'No', '2.4L', 'Blanco'),
+(3, 'GHI9876', 'Camioneta', 'Ford Ranger', 4, 5, 'No', '3.0L', 'Azul'),
+(4, 'JKL3456', 'Hatchback', 'Volkswagen Golf', 5, 5, 'Sí', '1.6L', 'Rojo'),
+(5, 'MNO7890', 'Sedán', 'Nissan Altima', 4, 5, 'Sí', '2.5L', 'Plata'),
+(6, 'PQR1234', 'SUV', 'Chevrolet Equinox', 5, 7, 'Sí', '2.4L', 'Negro'),
+(7, 'STU5678', 'Camioneta', 'Toyota Tacoma', 4, 5, 'No', '3.5L', 'Blanco'),
+(8, 'VWX9876', 'Hatchback', 'Ford Focus', 5, 5, 'Sí', '2.0L', 'Azul'),
+(9, 'YZA3456', 'Sedán', 'Hyundai Elantra', 4, 5, 'No', '2.0L', 'Gris'),
+(10, 'BCD1234', 'SUV', 'Mazda CX-5', 5, 7, 'Sí', '2.5L', 'Rojo'),
+(11, 'EFG5678', 'Camioneta', 'Ram 1500', 4, 5, 'No', '3.6L', 'Plata'),
+(12, 'HIJ9876', 'Hatchback', 'Chevrolet Spark', 5, 5, 'No', '1.4L', 'Verde'),
+(13, 'KLM3456', 'Sedán', 'BMW 320i', 4, 5, 'Sí', '2.0L', 'Negro'),
+(14, 'NOP7890', 'SUV', 'Audi Q5', 5, 7, 'Sí', '2.0L', 'Blanco'),
+(15, 'QRS1234', 'Camioneta', 'GMC Sierra', 4, 5, 'No', '5.3L', 'Azul'),
+(16, 'TUV5678', 'Hatchback', 'Kia Rio', 5, 5, 'Sí', '1.6L', 'Rojo'),
+(17, 'WXY9876', 'Sedán', 'Mercedes-Benz C-Class', 4, 5, 'Sí', '2.5L', 'Gris'),
+(18, 'ZAB3456', 'SUV', 'Jeep Cherokee', 5, 7, 'No', '2.4L', 'Negro'),
+(19, 'CDE1234', 'Camioneta', 'Chevrolet Colorado', 4, 5, 'Sí', '3.6L', 'Plata'),
+(20, 'FGH5678', 'Hatchback', 'Fiat 500', 3, 4, 'No', '1.2L', 'Verde'),
+(21, 'IJK6789', 'Sedán', 'Ford Fusion', 4, 5, 'Sí', '2.5L', 'Azul'),
+(22, 'LMN7890', 'SUV', 'Toyota Highlander', 5, 7, 'Sí', '3.5L', 'Rojo'),
+(23, 'OPQ9012', 'Camioneta', 'Chevrolet Silverado', 4, 5, 'No', '4.3L', 'Negro'),
+(24, 'RST1234', 'Hatchback', 'Mazda 3', 5, 5, 'Sí', '1.8L', 'Plata'),
+(25, 'UVW2345', 'Sedán', 'Audi A4', 4, 5, 'Sí', '2.0L', 'Blanco'),
+(26, 'XYZ3456', 'SUV', 'Nissan Pathfinder', 5, 7, 'Sí', '3.5L', 'Gris'),
+(27, 'AAA4567', 'Camioneta', 'Ford F-150', 4, 5, 'No', '5.0L', 'Azul'),
+(28, 'BBB5678', 'Hatchback', 'Honda Fit', 5, 5, 'No', '1.5L', 'Rojo'),
+(29, 'CCC6789', 'Sedán', 'Chrysler 200', 4, 5, 'Sí', '2.4L', 'Negro'),
+(30, 'DDD7890', 'SUV', 'Kia Sportage', 5, 7, 'Sí', '2.4L', 'Blanco'),
+(31, 'EEE8901', 'Camioneta', 'Ram Rebel', 4, 5, 'No', '5.7L', 'Plata'),
+(32, 'FFF9012', 'Hatchback', 'Hyundai Accent', 5, 5, 'Sí', '1.6L', 'Verde'),
+(33, 'GGG0123', 'Sedán', 'Lexus IS', 4, 5, 'Sí', '2.5L', 'Azul'),
+(34, 'HHH1234', 'SUV', 'Volkswagen Tiguan', 5, 7, 'Sí', '2.0L', 'Rojo'),
+(35, 'III2345', 'Camioneta', 'Chevrolet Traverse', 4, 5, 'No', '3.6L', 'Gris'),
+(36, 'JJJ3456', 'Hatchback', 'Fiat Panda', 5, 5, 'Sí', '1.3L', 'Negro'),
+(37, 'KKK4567', 'Sedán', 'Toyota Camry', 4, 5, 'Sí', '2.5L', 'Plata'),
+(38, 'LLL5678', 'SUV', 'Mazda CX-9', 5, 7, 'Sí', '3.7L', 'Azul'),
+(39, 'MMM6789', 'Camioneta', 'Nissan Titan', 4, 5, 'No', '5.6L', 'Blanco'),
+(40, 'NNN7890', 'Hatchback', 'Chevrolet Cruze', 5, 5, 'Sí', '1.8L', 'Rojo'),
+(41, 'OOO8901', 'Sedán', 'Honda Accord', 4, 5, 'Sí', '2.4L', 'Gris'),
+(42, 'PPP9012', 'SUV', 'Hyundai Santa Fe', 5, 7, 'Sí', '2.4L', 'Negro'),
+(43, 'QQQ0123', 'Camioneta', 'Ram Power Wagon', 4, 5, 'No', '6.4L', 'Plata'),
+(44, 'RRR1234', 'Hatchback', 'Volkswagen Polo', 5, 5, 'Sí', '1.6L', 'Blanco'),
+(45, 'SSS2345', 'Sedán', 'Mazda 6', 4, 5, 'Sí', '2.5L', 'Rojo'),
+(46, 'TTT3456', 'SUV', 'BMW X5', 5, 7, 'Sí', '3.0L', 'Gris'),
+(47, 'UUU4567', 'Camioneta', 'Ford Bronco', 4, 5, 'No', '2.7L', 'Azul'),
+(48, 'VVV5678', 'Hatchback', 'Renault Clio', 5, 5, 'Sí', '1.5L', 'Negro'),
+(49, 'WWW6789', 'Sedán', 'Chevrolet Malibu', 4, 5, 'Sí', '2.0L', 'Blanco'),
+(50, 'XXX7890', 'SUV', 'Land Rover Range Rover', 5, 7, 'Sí', '3.0L', 'Plata'),
+(51, 'YYY8901', 'Camioneta', 'Toyota Land Cruiser', 4, 5, 'No', '4.5L', 'Rojo'),
+(52, 'ZZZ9012', 'Hatchback', 'Peugeot 208', 5, 5, 'Sí', '1.6L', 'Verde'),
+(53, 'AAA1234', 'Sedán', 'Jaguar XE', 4, 5, 'Sí', '2.0L', 'Azul'),
+(54, 'BBB2345', 'SUV', 'Ford Explorer', 5, 7, 'Sí', '2.3L', 'Negro'),
+(55, 'CCC3456', 'Camioneta', 'Mercedes-Benz G-Class', 4, 5, 'No', '4.0L', 'Blanco'),
+(56, 'DDD4567', 'Hatchback', 'Toyota Yaris', 5, 5, 'Sí', '1.5L', 'Rojo'),
+(57, 'EEE5678', 'Sedán', 'Infiniti Q50', 4, 5, 'Sí', '2.0L', 'Plata'),
+(58, 'FFF6789', 'SUV', 'Acura MDX', 5, 7, 'Sí', '3.5L', 'Gris'),
+(59, 'GGG7890', 'Camioneta', 'Honda Pilot', 4, 5, 'No', '3.5L', 'Negro'),
+(60, 'HHH8901', 'Hatchback', 'BMW M2', 5, 5, 'Sí', '2.0L', 'Azul'),
+(61, 'III9012', 'Sedán', 'Audi S4', 4, 5, 'Sí', '3.0L', 'Blanco'),
+(62, 'JJJ0123', 'SUV', 'Porsche Cayenne', 5, 7, 'Sí', '3.6L', 'Rojo'),
+(63, 'KKK1234', 'Camioneta', 'GMC Canyon', 4, 5, 'No', '3.6L', 'Plata'),
+(64, 'LLL2345', 'Hatchback', 'Nissan Versa', 5, 5, 'Sí', '1.8L', 'Negro'),
+(65, 'MMM3456', 'Sedán', 'Lexus ES', 4, 5, 'Sí', '2.5L', 'Gris'),
+(66, 'NNN4567', 'SUV', 'Chevrolet Traverse', 5, 7, 'Sí', '3.6L', 'Azul'),
+(67, 'OOO5678', 'Camioneta', 'Toyota Tundra', 4, 5, 'No', '5.7L', 'Blanco'),
+(68, 'PPP6789', 'Hatchback', 'Kia Soul', 5, 5, 'Sí', '1.6L', 'Rojo'),
+(69, 'QQQ7890', 'Sedán', 'Subaru Legacy', 4, 5, 'Sí', '2.5L', 'Negro'),
+(70, 'RRR8901', 'SUV', 'Jeep Grand Cherokee', 5, 7, 'Sí', '3.6L', 'Gris'),
+(71, 'SSS9012', 'Camioneta', 'Ram 2500', 4, 5, 'No', '6.7L', 'Plata'),
+(72, 'TTT0123', 'Hatchback', 'Chevrolet Bolt', 5, 5, 'Sí', '1.0L', 'Azul'),
+(73, 'UUU1234', 'Sedán', 'BMW 330i', 4, 5, 'Sí', '2.0L', 'Rojo'),
+(74, 'VVV2345', 'SUV', 'Mitsubishi Outlander', 5, 7, 'Sí', '2.4L', 'Blanco'),
+(75, 'WWW3456', 'Camioneta', 'Ford Expedition', 4, 5, 'No', '3.5L', 'Gris'),
+(76, 'XXX4567', 'Hatchback', 'Toyota Prius', 5, 5, 'Sí', '1.8L', 'Negro'),
+(77, 'YYY5678', 'Sedán', 'Nissan Sentra', 4, 5, 'Sí', '1.8L', 'Plata'),
+(78, 'ZZZ6789', 'SUV', 'Honda Pilot', 5, 7, 'Sí', '3.5L', 'Rojo'),
+(79, 'AAA7890', 'Camioneta', 'Chevrolet Avalanche', 4, 5, 'No', '5.3L', 'Blanco'),
+(80, 'BBB8901', 'Hatchback', 'Fiat 500X', 5, 5, 'Sí', '1.4L', 'Azul'),
+(81, 'CCC9012', 'Sedán', 'Kia Optima', 4, 5, 'Sí', '2.4L', 'Rojo'),
+(82, 'DDD0123', 'SUV', 'Ford Escape', 5, 7, 'Sí', '2.5L', 'Gris'),
+(83, 'EEE1234', 'Camioneta', 'Chevrolet Suburban', 4, 5, 'No', '5.3L', 'Plata'),
+(84, 'FFF2345', 'Hatchback', 'Hyundai Elantra GT', 5, 5, 'Sí', '2.0L', 'Blanco'),
+(85, 'GGG3456', 'Sedán', 'Honda Civic', 4, 5, 'Sí', '2.0L', 'Negro'),
+(86, 'HHH4567', 'SUV', 'Volkswagen Atlas', 5, 7, 'Sí', '3.6L', 'Azul'),
+(87, 'III5678', 'Camioneta', 'Ford Ranger Raptor', 4, 5, 'No', '3.5L', 'Rojo'),
+(88, 'JJJ6789', 'Hatchback', 'Peugeot 208 GTi', 5, 5, 'Sí', '1.6L', 'Plata'),
+(89, 'KKK7890', 'Sedán', 'Mazda CX-3', 4, 5, 'Sí', '2.5L', 'Blanco'),
+(90, 'LLL8901', 'SUV', 'Subaru Outback', 5, 7, 'Sí', '2.5L', 'Negro'),
+(91, 'MMM9012', 'Camioneta', 'Toyota 4Runner', 4, 5, 'No', '4.0L', 'Azul'),
+(92, 'NNN0123', 'Hatchback', 'Honda Civic Type R', 5, 5, 'Sí', '2.0L', 'Rojo'),
+(93, 'OOO1234', 'Sedán', 'Nissan Maxima', 4, 5, 'Sí', '3.5L', 'Plata'),
+(94, 'PPP2345', 'SUV', 'Chrysler Pacifica', 5, 7, 'Sí', '3.6L', 'Gris'),
+(95, 'QQQ3456', 'Camioneta', 'Toyota Sequoia', 4, 5, 'No', '5.7L', 'Negro'),
+(96, 'RRR4567', 'Hatchback', 'Mazda 2', 5, 5, 'Sí', '1.5L', 'Azul'),
+(97, 'SSS5678', 'Sedán', 'Chevrolet Cruze', 4, 5, 'Sí', '1.8L', 'Rojo'),
+(98, 'TTT6789', 'SUV', 'BMW X6', 5, 7, 'Sí', '3.0L', 'Blanco'),
+(99, 'UUU7890', 'Camioneta', 'Ford F-250', 4, 5, 'No', '6.7L', 'Gris'),
+(100, 'VVV8901', 'Hatchback', 'Peugeot 208', 5, 5, 'Sí', '1.6L', 'Plata');
 
 
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (1, 300, 50, 10.0, 270);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (2, 250, 40, 15.0, 212.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (3, 200, 35, 5.0, 190);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (4, 350, 60, 20.0, 280);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (5, 400, 70, 25.0, 300);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (6, 150, 25, 10.0, 135);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (7, 500, 90, 30.0, 350);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (8, 600, 100, 5.0, 570);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (9, 450, 80, 15.0, 382.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (10, 550, 95, 20.0, 440);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (11, 300, 50, 10.0, 270);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (12, 250, 40, 15.0, 212.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (13, 200, 35, 5.0, 190);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (14, 350, 60, 20.0, 280);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (15, 400, 70, 25.0, 300);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (16, 150, 25, 10.0, 135);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (17, 500, 90, 30.0, 350);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (18, 600, 100, 5.0, 570);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (19, 450, 80, 15.0, 382.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (20, 550, 95, 20.0, 440);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (21, 320, 55, 18.0, 262.4);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (22, 240, 42, 10.0, 216);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (23, 180, 30, 15.0, 153);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (24, 370, 65, 20.0, 296);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (25, 430, 72, 25.0, 322.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (26, 160, 28, 12.0, 140.8);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (27, 480, 85, 28.0, 345.6);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (28, 620, 107, 10.0, 558);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (29, 380, 64, 20.0, 304);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (30, 520, 90, 30.0, 364);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (31, 350, 60, 15.0, 297.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (32, 275, 47, 10.0, 247.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (33, 225, 38, 20.0, 180);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (34, 400, 70, 25.0, 300);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (35, 150, 25, 8.0, 138);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (36, 550, 95, 7.0, 511.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (37, 600, 100, 9.0, 546);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (38, 485, 84, 16.0, 407.4);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (39, 650, 110, 12.0, 572);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (40, 530, 90, 10.0, 477);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (41, 305, 52, 15.0, 258.25);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (42, 435, 75, 20.0, 348);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (43, 260, 45, 10.0, 234);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (44, 480, 85, 25.0, 360);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (45, 220, 37, 5.0, 209);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (46, 530, 90, 10.0, 477);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (47, 390, 65, 17.0, 323.7);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (48, 600, 100, 8.0, 552);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (49, 490, 80, 12.0, 431.2);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (50, 640, 110, 6.0, 601.6);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (51, 375, 62, 13.0, 326.25);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (52, 450, 75, 20.0, 360);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (53, 290, 48, 15.0, 246.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (54, 570, 95, 5.0, 541.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (55, 450, 75, 18.0, 369);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (56, 420, 70, 22.0, 327.6);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (57, 310, 50, 9.0, 282.1);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (58, 590, 100, 13.0, 512.3);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (59, 370, 60, 15.0, 314.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (60, 330, 55, 10.0, 297);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (61, 220, 37, 11.0, 195.8);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (62, 520, 90, 25.0, 390);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (63, 450, 75, 20.0, 360);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (64, 390, 65, 15.0, 331.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (65, 510, 85, 5.0, 484.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (66, 330, 55, 10.0, 297);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (67, 290, 50, 12.0, 255.2);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (68, 430, 72, 15.0, 365.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (69, 610, 105, 20.0, 488);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (70, 480, 80, 10.0, 432);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (71, 290, 50, 15.0, 246.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (72, 370, 62, 10.0, 333);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (73, 540, 90, 22.0, 421.2);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (74, 600, 100, 20.0, 480);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (75, 270, 45, 10.0, 243);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (76, 390, 65, 30.0, 273);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (77, 570, 95, 5.0, 541.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (78, 650, 110, 12.0, 572);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (79, 430, 75, 5.0, 408.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (80, 350, 60, 25.0, 262.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (81, 370, 65, 20.0, 296);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (82, 450, 70, 15.0, 382.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (83, 300, 54, 10.0, 270);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (84, 370, 62, 22.0, 288.6);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (85, 590, 100, 8.0, 542);  
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (86, 620, 105, 15.0, 527);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (87, 650, 110, 20.0, 520);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (88, 550, 95, 30.0, 385);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (89, 450, 75, 18.0, 369);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (90, 310, 52, 10.0, 279);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (91, 290, 50, 12.0, 255.2);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (92, 48, 80, 25.0, 36);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (93, 570, 95, 5.0, 541.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (94, 490, 80, 12.0, 431.2);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (95, 360, 60, 14.0, 309.6);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (96, 680, 115, 22.0, 529.4);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (97, 590, 100, 25.0, 442.5);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (98, 450, 75, 40.0, 270);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (99, 700, 120, 15.0, 595);
-INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES (100, 360, 60, 20.0, 288);
+INSERT INTO descuento (id, valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) VALUES
+(1, 300, 50, 0.05, 285),
+(2, 400, 60, 0.10, 360),
+(3, 500, 75, 0.15, 425),
+(4, 600, 90, 0.20, 480),
+(5, 700, 100, 0.10, 630),
+(6, 800, 120, 0.25, 600),
+(7, 900, 130, 0.12, 792),
+(8, 1000, 150, 0.18, 820),
+(9, 1100, 160, 0.10, 1040),
+(10, 1200, 180, 0.22, 936),
+(11, 1300, 190, 0.15, 1105),
+(12, 1400, 210, 0.10, 1260),
+(13, 1500, 225, 0.05, 1425),
+(14, 1600, 240, 0.20, 1280),
+(15, 1700, 250, 0.12, 1496),
+(16, 1800, 270, 0.18, 1476),
+(17, 1900, 280, 0.10, 1710),
+(18, 2000, 300, 0.25, 1500),
+(19, 2100, 320, 0.15, 1785),
+(20, 2200, 340, 0.10, 1980),
+(21, 2300, 350, 0.12, 2024),
+(22, 2400, 360, 0.08, 2208),
+(23, 2500, 375, 0.10, 2250),
+(24, 2600, 380, 0.15, 2210),
+(25, 2700, 400, 0.12, 2376),
+(26, 2800, 420, 0.20, 2240),
+(27, 2900, 440, 0.18, 2372),
+(28, 3000, 450, 0.25, 2250),
+(29, 3100, 470, 0.10, 2790),
+(30, 3200, 480, 0.05, 3040),
+(31, 3300, 500, 0.20, 2640),
+(32, 3400, 520, 0.15, 2880),
+(33, 3500, 530, 0.12, 3080),
+(34, 3600, 550, 0.18, 2952),
+(35, 3700, 570, 0.10, 3330),
+(36, 3800, 580, 0.08, 3496),
+(37, 3900, 600, 0.10, 3510),
+(38, 4000, 620, 0.12, 3520),
+(39, 4100, 630, 0.15, 3485),
+(40, 4200, 650, 0.18, 3444),
+(41, 4300, 660, 0.10, 3870),
+(42, 4400, 680, 0.05, 4180),
+(43, 4500, 700, 0.20, 3600),
+(44, 4600, 710, 0.15, 3910),
+(45, 4700, 730, 0.12, 4126),
+(46, 4800, 740, 0.18, 3936),
+(47, 4900, 760, 0.10, 4410),
+(48, 5000, 780, 0.08, 4600),
+(49, 5100, 790, 0.10, 4590),
+(50, 5200, 800, 0.15, 4420),
+(51, 5300, 820, 0.12, 4664),
+(52, 5400, 830, 0.18, 4428),
+(53, 5500, 850, 0.10, 4950),
+(54, 5600, 860, 0.05, 5320),
+(55, 5700, 880, 0.20, 4560),
+(56, 5800, 900, 0.15, 4930),
+(57, 5900, 910, 0.12, 5192),
+(58, 6000, 930, 0.18, 4920),
+(59, 6100, 940, 0.10, 5490),
+(60, 6200, 960, 0.08, 5704),
+(61, 6300, 970, 0.10, 5670),
+(62, 6400, 990, 0.12, 5632),
+(63, 6500, 1000, 0.15, 5525),
+(64, 6600, 1020, 0.18, 5412),
+(65, 6700, 1030, 0.10, 6030),
+(66, 6800, 1050, 0.05, 6460),
+(67, 6900, 1070, 0.20, 5520),
+(68, 7000, 1080, 0.15, 5950),
+(69, 7100, 1100, 0.12, 6256),
+(70, 7200, 1110, 0.18, 5904),
+(71, 7300, 1130, 0.10, 6570),
+(72, 7400, 1140, 0.08, 6808),
+(73, 7500, 1160, 0.10, 6750),
+(74, 7600, 1180, 0.15, 6460),
+(75, 7700, 1190, 0.12, 6784),
+(76, 7800, 1210, 0.18, 6396),
+(77, 7900, 1220, 0.10, 7110),
+(78, 8000, 1230, 0.05, 7600),
+(79, 8100, 1250, 0.20, 6480),
+(80, 8200, 1260, 0.15, 6940),
+(81, 8300, 1280, 0.12, 7328),
+(82, 8400, 1290, 0.18, 6888),
+(83, 8500, 1310, 0.10, 7650),
+(84, 8600, 1320, 0.08, 7872),
+(85, 8700, 1340, 0.10, 7830),
+(86, 8800, 1350, 0.15, 7480),
+(87, 8900, 1360, 0.12, 7832),
+(88, 9000, 1380, 0.18, 7380),
+(89, 9100, 1390, 0.10, 8190),
+(90, 9200, 1400, 0.05, 8740),
+(91, 9300, 1420, 0.20, 7440),
+(92, 9400, 1430, 0.15, 7990),
+(93, 9500, 1450, 0.12, 8360),
+(94, 9600, 1460, 0.18, 7872),
+(95, 9700, 1480, 0.10, 8730),
+(96, 9800, 1490, 0.08, 9016),
+(97, 9900, 1510, 0.10, 8910),
+(98, 10000, 1520, 0.15, 8500),
+(99, 10100, 1540, 0.12, 8896),
+(100, 10200, 1550, 0.18, 8364);
 
 
+-- Inserciones para la tabla alquileres
 INSERT INTO alquileres (id, id_vehiculo, id_cliente, id_empleado, id_sucursal, id_descuento, fecha_entrada, fecha_salida, valor_cotisado, fecha_esparada) VALUES
-(1, 51, 1, 1, 1, 1, '2023-04-01', '2023-04-07', 350, '2023-04-01'),
-(2, 52, 2, 2, 2, 2, '2023-04-02', '2023-04-08', 420, '2023-04-02'),
-(3, 53, 3, 3, 3, 3, '2023-04-03', '2023-04-09', 300, '2023-04-03'),
-(4, 54, 4, 4, 4, 4, '2023-04-04', '2023-04-10', 450, '2023-04-04'),
-(5, 55, 5, 5, 5, 5, '2023-04-05', '2023-04-11', 180, '2023-04-05'),
-(6, 56, 6, 6, 6, 6, '2023-04-06', '2023-04-12', 300, '2023-04-06'),
-(7, 57, 7, 7, 7, 7, '2023-04-07', '2023-04-13', 220, '2023-04-07'),
-(8, 58, 8, 8, 8, 8, '2023-04-08', '2023-04-14', 350, '2023-04-08'),
-(9, 59, 9, 9, 9, 9, '2023-04-09', '2023-04-15', 430, '2023-04-09'),
-(10, 60, 10, 10, 10, 10, '2023-04-10', '2023-04-16', 500, '2023-04-10'),
-(11, 61, 11, 11, 11, 11, '2023-04-11', '2023-04-17', 275, '2023-04-11'),
-(12, 62, 12, 12, 12, 12, '2023-04-12', '2023-04-18', 320, '2023-04-12'),
-(13, 63, 13, 13, 13, 13, '2023-04-13', '2023-04-19', 400, '2023-04-13'),
-(14, 64, 14, 14, 14, 14, '2023-04-14', '2023-04-20', 290, '2023-04-14'),
-(15, 65, 15, 15, 15, 15, '2023-04-15', '2023-04-21', 220, '2023-04-15'),
-(16, 66, 16, 16, 16, 16, '2023-04-16', '2023-04-22', 340, '2023-04-16'),
-(17, 67, 17, 17, 17, 17, '2023-04-17', '2023-04-23', 360, '2023-04-17'),
-(18, 68, 18, 18, 18, 18, '2023-04-18', '2023-04-24', 375, '2023-04-18'),
-(19, 69, 19, 19, 19, 19, '2023-04-19', '2023-04-25', 230, '2023-04-19'),
-(20, 70, 20, 20, 20, 20, '2023-04-20', '2023-04-26', 280, '2023-04-20'),
-(21, 71, 21, 21, 21, 21, '2023-04-21', '2023-04-27', 300, '2023-04-21'),
-(22, 72, 22, 22, 22, 22, '2023-04-22', '2023-04-28', 450, '2023-04-22'),
-(23, 73, 23, 23, 23, 23, '2023-04-23', '2023-04-29', 330, '2023-04-23'),
-(24, 74, 24, 24, 24, 24, '2023-04-24', '2023-04-30', 370, '2023-04-24'),
-(25, 75, 25, 25, 25, 25, '2023-04-25', '2023-05-01', 380, '2023-04-25'),
-(26, 76, 26, 26, 26, 26, '2023-04-26', '2023-05-02', 210, '2023-04-26'),
-(27, 77, 27, 27, 27, 27, '2023-04-27', '2023-05-03', 390, '2023-04-27'),
-(28, 78, 28, 28, 28, 28, '2023-04-28', '2023-05-04', 410, '2023-04-28'),
-(29, 79, 29, 29, 29, 29, '2023-04-29', '2023-05-05', 290, '2023-04-29'),
-(30, 80, 30, 30, 30, 30, '2023-04-30', '2023-05-06', 500, '2023-04-30'),
-(31, 81, 31, 31, 31, 31, '2023-05-01', '2023-05-07', 470, '2023-05-01'),
-(32, 82, 32, 32, 32, 32, '2023-05-02', '2023-05-08', 250, '2023-05-02'),
-(33, 83, 33, 33, 33, 33, '2023-05-03', '2023-05-09', 310, '2023-05-03'),
-(34, 84, 34, 34, 34, 34, '2023-05-04', '2023-05-10', 395, '2023-05-04'),
-(35, 85, 35, 35, 35, 35, '2023-05-05', '2023-05-11', 300, '2023-05-05'),
-(36, 86, 36, 36, 36, 36, '2023-05-06', '2023-05-12', 280, '2023-05-06'),
-(37, 87, 37, 37, 37, 37, '2023-05-07', '2023-05-13', 390, '2023-05-07'),
-(38, 88, 38, 38, 38, 38, '2023-05-08', '2023-05-14', 410, '2023-05-08'),
-(39, 89, 39, 39, 39, 39, '2023-05-09', '2023-05-15', 420, '2023-05-09'),
-(40, 90, 40, 40, 40, 40, '2023-05-10', '2023-05-16', 430, '2023-05-10'),
-(41, 91, 41, 41, 41, 41, '2023-05-11', '2023-05-17', 300, '2023-05-11'),
-(42, 92, 42, 42, 42, 42, '2023-05-12', '2023-05-18', 180, '2023-05-12'),
-(43, 93, 43, 43, 43, 43, '2023-05-13', '2023-05-19', 260, '2023-05-13'),
-(44, 94, 44, 44, 44, 44, '2023-05-14', '2023-05-20', 340, '2023-05-14'),
-(45, 95, 45, 45, 45, 45, '2023-05-15', '2023-05-21', 350, '2023-05-15'),
-(46, 96, 46, 46, 46, 46, '2023-05-16', '2023-05-22', 320, '2023-05-16'),
-(47, 97, 47, 47, 47, 47, '2023-05-17', '2023-05-23', 410, '2023-05-17'),
-(48, 98, 48, 48, 48, 48, '2023-05-18', '2023-05-24', 430, '2023-05-18'),
-(49, 99, 49, 49, 49, 49, '2023-05-19', '2023-05-25', 450, '2023-05-19'),
-(50, 100, 50, 50, 50, 50, '2023-05-20', '2023-05-26', 490, '2023-05-20'),
-(51, 51, 1, 1, 1, 51, '2023-05-21', '2023-05-27', 300, '2023-05-21'),
-(52, 52, 2, 2, 2, 52, '2023-05-22', '2023-05-28', 270, '2023-05-22'),
-(53, 53, 3, 3, 3, 53, '2023-05-23', '2023-05-29', 310, '2023-05-23'),
-(54, 54, 4, 4, 4, 54, '2023-05-24', '2023-05-30', 350, '2023-05-24'),
-(55, 55, 5, 5, 5, 55, '2023-05-25', '2023-05-31', 360, '2023-05-25'),
-(56, 56, 6, 6, 6, 56, '2023-05-26', '2023-06-01', 350, '2023-05-26'),
-(57, 57, 7, 7, 7, 57, '2023-05-27', '2023-06-02', 320, '2023-05-27'),
-(58, 58, 8, 8, 8, 58, '2023-05-28', '2023-06-03', 310, '2023-05-28'),
-(59, 59, 9, 9, 9, 59, '2023-05-29', '2023-06-04', 440, '2023-05-29'),
-(60, 60, 10, 10, 10, 60, '2023-05-30', '2023-06-05', 360, '2023-05-30'),
-(61, 61, 11, 11, 11, 61, '2023-05-31', '2023-06-06', 420, '2023-05-31'),
-(62, 62, 12, 12, 12, 62, '2023-06-01', '2023-06-07', 310, '2023-06-01'),
-(63, 63, 13, 13, 13, 63, '2023-06-02', '2023-06-08', 280, '2023-06-02'),
-(64, 64, 14, 14, 14, 64, '2023-06-03', '2023-06-09', 440, '2023-06-03'),
-(65, 65, 15, 15, 15, 65, '2023-06-04', '2023-06-10', 380, '2023-06-04'),
-(66, 66, 16, 16, 16, 66, '2023-06-05', '2023-06-11', 310, '2023-06-05'),
-(67, 67, 17, 17, 17, 67, '2023-06-06', '2023-06-12', 370, '2023-06-06'),
-(68, 68, 18, 18, 18, 68, '2023-06-07', '2023-06-13', 390, '2023-06-07'),
-(69, 69, 19, 19, 19, 69, '2023-06-08', '2023-06-14', 310, '2023-06-08'),
-(70, 70, 20, 20, 20, 70, '2023-06-09', '2023-06-15', 320, '2023-06-09'),
-(71, 71, 21, 21, 21, 71, '2023-06-10', '2023-06-16', 300, '2023-06-10'),
-(72, 72, 22, 22, 22, 72, '2023-06-11', '2023-06-17', 270, '2023-06-11'),
-(73, 73, 23, 23, 23, 73, '2023-06-12', '2023-06-18', 310, '2023-06-12'),
-(74, 74, 24, 24, 24, 74, '2023-06-13', '2023-06-19', 350, '2023-06-13'),
-(75, 75, 25, 25, 25, 75, '2023-06-14', '2023-06-20', 390, '2023-06-14'),
-(76, 76, 26, 26, 26, 76, '2023-06-15', '2023-06-21', 420, '2023-06-15'),
-(77, 77, 27, 27, 27, 77, '2023-06-16', '2023-06-22', 430, '2023-06-16'),
-(78, 78, 28, 28, 28, 78, '2023-06-17', '2023-06-23', 440, '2023-06-17'),
-(79, 79, 29, 29, 29, 79, '2023-06-18', '2023-06-24', 450, '2023-06-18'),
-(80, 80, 30, 30, 30, 80, '2023-06-19', '2023-06-25', 460, '2023-06-19'),
-(81, 81, 31, 31, 31, 81, '2023-06-20', '2023-06-26', 310, '2023-06-20'),
-(82, 82, 32, 32, 32, 82, '2023-06-21', '2023-06-27', 300, '2023-06-21'),
-(83, 83, 33, 33, 33, 83, '2023-06-22', '2023-06-28', 290, '2023-06-22'),
-(84, 84, 34, 34, 34, 84, '2023-06-23', '2023-06-29', 340, '2023-06-23'),
-(85, 85, 35, 35, 35, 85, '2023-06-24', '2023-06-30', 350, '2023-06-24'),
-(86, 86, 36, 36, 36, 86, '2023-06-25', '2023-07-01', 360, '2023-06-25'),
-(87, 87, 37, 37, 37, 87, '2023-06-26', '2023-07-02', 370, '2023-06-26'),
-(88, 88, 38, 38, 38, 88, '2023-06-27', '2023-07-03', 380, '2023-06-27'),
-(89, 89, 39, 39, 39, 89, '2023-06-28', '2023-07-04', 390, '2023-06-28'),
-(90, 90, 40, 40, 40, 90, '2023-06-29', '2023-07-05', 400, '2023-06-29'),
-(91, 91, 41, 41, 41, 91, '2023-06-30', '2023-07-06', 320, '2023-06-30'),
-(92, 92, 42, 42, 42, 92, '2023-07-01', '2023-07-07', 310, '2023-07-01'),
-(93, 93, 43, 43, 43, 93, '2023-07-02', '2023-07-08', 280, '2023-07-02'),
-(94, 94, 44, 44, 44, 94, '2023-07-03', '2023-07-09', 260, '2023-07-03'),
-(95, 95, 45, 45, 45, 95, '2023-07-04', '2023-07-10', 320, '2023-07-04'),
-(96, 96, 46, 46, 46, 96, '2023-07-05', '2023-07-11', 350, '2023-07-05'),
-(97, 97, 47, 47, 47, 97, '2023-07-06', '2023-07-12', 360, '2023-07-06'),
-(98, 98, 48, 48, 48, 98, '2023-07-07', '2023-07-13', 370, '2023-07-07'),
-(99, 99, 49, 49, 49, 99, '2023-07-08', '2023-07-14', 380, '2023-07-08'),
-(100, 100, 50, 50, 50, 100, '2023-07-09', '2023-07-15', 390, '2023-07-09');
+(1, 1, 1, 1, 1, 1, '2024-01-10', '2024-01-17', 350, '2024-01-15'),
+(2, 2, 2, 2, 2, 2, '2024-02-05', '2024-02-12', 420, '2024-02-10'),
+(3, 3, 3, 3, 3, 3, '2024-03-01', '2024-03-08', 500, '2024-03-05'),
+(4, 4, 4, 4, 4, 4, '2024-03-15', '2024-03-22', 600, '2024-03-18'),
+(5, 5, 5, 5, 5, 5, '2024-04-01', '2024-04-08', 700, '2024-04-05'),
+(6, 6, 6, 6, 6, 6, '2024-04-10', '2024-04-17', 800, '2024-04-13'),
+(7, 7, 7, 7, 7, 7, '2024-05-01', '2024-05-08', 900, '2024-05-03'),
+(8, 8, 8, 8, 8, 8, '2024-05-15', '2024-05-22', 1000, '2024-05-18'),
+(9, 9, 9, 9, 9, 9, '2024-06-01', '2024-06-08', 1100, '2024-06-05'),
+(10, 10, 10, 10, 10, 10, '2024-06-10', '2024-06-17', 1200, '2024-06-12'),
+(11, 11, 11, 11, 11, 11, '2024-07-01', '2024-07-08', 1300, '2024-07-03'),
+(12, 12, 12, 12, 12, 12, '2024-07-10', '2024-07-17', 1400, '2024-07-13'),
+(13, 13, 13, 13, 13, 13, '2024-08-01', '2024-08-08', 1500, '2024-08-03'),
+(14, 14, 14, 14, 14, 14, '2024-08-10', '2024-08-17', 1600, '2024-08-13'),
+(15, 15, 15, 15, 15, 15, '2024-09-01', '2024-09-08', 1700, '2024-09-05'),
+(16, 16, 16, 16, 16, 16, '2024-09-10', '2024-09-17', 1800, '2024-09-13'),
+(17, 17, 17, 17, 17, 17, '2024-10-01', '2024-10-08', 1900, '2024-10-03'),
+(18, 18, 18, 18, 18, 18, '2024-10-10', '2024-10-17', 2000, '2024-10-13'),
+(19, 19, 19, 19, 19, 19, '2024-11-01', '2024-11-08', 2100, '2024-11-05'),
+(20, 20, 20, 20, 20, 20, '2024-11-10', '2024-11-17', 2200, '2024-11-13'),
+(21, 21, 21, 21, 21, 21, '2024-12-01', '2024-12-08', 2300, '2024-12-03'),
+(22, 22, 22, 22, 22, 22, '2024-12-10', '2024-12-17', 2400, '2024-12-12'),
+(23, 23, 23, 23, 23, 23, '2025-01-01', '2025-01-08', 2500, '2025-01-03'),
+(24, 24, 24, 24, 24, 24, '2025-01-10', '2025-01-17', 2600, '2025-01-12'),
+(25, 25, 25, 25, 25, 25, '2025-02-01', '2025-02-08', 2700, '2025-02-03'),
+(26, 26, 26, 26, 26, 26, '2025-02-10', '2025-02-17', 2800, '2025-02-12'),
+(27, 27, 27, 27, 27, 27, '2025-03-01', '2025-03-08', 2900, '2025-03-03'),
+(28, 28, 28, 28, 28, 28, '2025-03-10', '2025-03-17', 3000, '2025-03-12'),
+(29, 29, 29, 29, 29, 29, '2025-04-01', '2025-04-08', 3100, '2025-04-03'),
+(30, 30, 30, 30, 30, 30, '2025-04-10', '2025-04-17', 3200, '2025-04-12'),
+(31, 31, 31, 31, 31, 31, '2025-05-01', '2025-05-08', 3300, '2025-05-03'),
+(32, 32, 32, 32, 32, 32, '2025-05-15', '2025-05-22', 3400, '2025-05-18'),
+(33, 33, 33, 33, 33, 33, '2025-06-01', '2025-06-08', 3500, '2025-06-03'),
+(34, 34, 34, 34, 34, 34, '2025-06-10', '2025-06-17', 3600, '2025-06-13'),
+(35, 35, 35, 35, 35, 35, '2025-07-01', '2025-07-08', 3700, '2025-07-03'),
+(36, 36, 36, 36, 36, 36, '2025-07-10', '2025-07-17', 3800, '2025-07-12'),
+(37, 37, 37, 37, 37, 37, '2025-08-01', '2025-08-08', 3900, '2025-08-03'),
+(38, 38, 38, 38, 38, 38, '2025-08-10', '2025-08-17', 4000, '2025-08-13'),
+(39, 39, 39, 39, 39, 39, '2025-09-01', '2025-09-08', 4100, '2025-09-03'),
+(40, 40, 40, 40, 40, 40, '2025-09-10', '2025-09-17', 4200, '2025-09-12'),
+(41, 41, 41, 41, 41, 41, '2025-10-01', '2025-10-08', 4300, '2025-10-03'),
+(42, 42, 42, 42, 42, 42, '2025-10-10', '2025-10-17', 4400, '2025-10-12'),
+(43, 43, 43, 43, 43, 43, '2025-11-01', '2025-11-08', 4500, '2025-11-03'),
+(44, 44, 44, 44, 44, 44, '2025-11-10', '2025-11-17', 4600, '2025-11-12'),
+(45, 45, 45, 45, 45, 45, '2025-12-01', '2025-12-08', 4700, '2025-12-03'),
+(46, 46, 46, 46, 46, 46, '2025-12-10', '2025-12-17', 4800, '2025-12-13'),
+(47, 47, 47, 47, 47, 47, '2026-01-01', '2026-01-08', 4900, '2026-01-03'),
+(48, 48, 48, 48, 48, 48, '2026-01-10', '2026-01-17', 5000, '2026-01-12'),
+(49, 49, 49, 49, 49, 49, '2026-02-01', '2026-02-08', 5100, '2026-02-03'),
+(50, 50, 50, 50, 50, 50, '2026-02-10', '2026-02-17', 5200, '2026-02-12'),
+(51, 51, 51, 51, 51, 51, '2026-03-01', '2026-03-08', 5300, '2026-03-03'),
+(52, 52, 52, 52, 52, 52, '2026-03-10', '2026-03-17', 5400, '2026-03-13'),
+(53, 53, 53, 53, 53, 53, '2026-04-01', '2026-04-08', 5500, '2026-04-03'),
+(54, 54, 54, 54, 54, 54, '2026-04-10', '2026-04-17', 5600, '2026-04-12'),
+(55, 55, 55, 55, 55, 55, '2026-05-01', '2026-05-08', 5700, '2026-05-03'),
+(56, 56, 56, 56, 56, 56, '2026-05-15', '2026-05-22', 5800, '2026-05-18'),
+(57, 57, 57, 57, 57, 57, '2026-06-01', '2026-06-08', 5900, '2026-06-03'),
+(58, 58, 58, 58, 58, 58, '2026-06-10', '2026-06-17', 6000, '2026-06-12'),
+(59, 59, 59, 59, 59, 59, '2026-07-01', '2026-07-08', 6100, '2026-07-03'),
+(60, 60, 60, 60, 60, 60, '2026-07-10', '2026-07-17', 6200, '2026-07-12');
 
 
 
@@ -695,23 +660,22 @@ select id, ciudad from sucursales where ciudad = 'Barcelona';
 -- 2 selecciona todos los datos de los empleados qie trabajan en madrid y su ciudad de residencia es cali
 select * from empleado where id_sucursal= 1 and ciudad_residencia = 'Cali';
 
--- 3 lista fecha_salida, fecha_llegada de los dos alquileres que tienen mayor presupuesto.
-select fecha_salida, fecha_llegada from alquileres;
+-- devuelve un listado con los alquileres que su valor cotizado sea mayor 2000
+select * from alquileres where valor_cotisado > 2000;
 
-select * from descuento;
--- 4.cual es el porcentaje entre el valor de alquiler semanal y el diario
+-- 4.cual es el porcentaje entre el valor de alquiler semanal
 delimiter //
-create function porcentaje(valor_alquiler_semanal int, valor_alquiler_dia int)
+create function porcentaje(valor_alquiler_semanal double)
 returns double
 deterministic
 begin
 	declare porcentaje double;
-	return porcentaje = valor_alquiler_semanal + valor_alquiler_dia ;
+	select avg(valor_alquiler_semanal) into porcentaje from descuento;
     return porcentaje;
 end //
 delimiter ;
 
-select porcentaje(valor_alquiler_semanal,valor_alquiler_dia) from descuento;
+select porcentaje(valor_alquiler_semanal) from descuento;
 
 -- 5 devuelve un listado con el id,modelo y la placa de los vehiculos de color megro
 select modelo, placa from vehiculos where color = 'negro';
@@ -721,7 +685,7 @@ select * from vehiculos;
 select id, placa, tipo_vehiculo from vehiculos where color = 'Rojo' and puertas > 2;
 
 -- 7 devuelve un listado de cuantos vehiculos tienen mas de dos puertas, su capacidad sea mayor a 2 y que tengan sunroof y se ordene de forma ascendente 
-select count(puertas) as mas_de_dos_puertas, capacidad, sunroof from vehiculos where capacidad > 2 and sunroof = 'si' group by 2 having count(puertas) > 2 order by 1 asc;
+select count(puertas) as mas_de_dos_puertas, capacidad, sfunroof from vehiculos where capacidad > 2 and sunroof = 'si' group by 2 having count(puertas) > 2 order by 1 asc;
 
 -- 8 devuelve un listado de todos los datos de los empleado que residen en medellin 
 select * from empleado;
@@ -759,4 +723,38 @@ select * from empleado;
 select * from sucursales;
 select e.id, e.cedula, e.nombre, e.apellido, e.celular, e.id_sucursal from empleado e inner join sucursales s on e.id_sucursal = s.id where s.id=  3;
 
--- 16.Calcula cuantos empleado trabajan en la sucursal de valencia
+-- 16.Calcula cuantos empleado trabajan en la sucursal de madrid
+select count(e.id) from empleado e inner join sucursales s on e.id_sucursal = s.id where s.id = 1;
+
+-- 17. Devuelve el nombre de la sucursal donde trabaja el empleado que tiene
+-- la cedula 144567890
+select s.ciudad from sucursales s inner join empleado e on s.id = e.id_sucursal where e.cedula = 144567890;
+
+-- 18.Devuelve el nombre de la ciudad de la sucursal donde trabaja el empleado
+-- Ricardo	Martínez
+select s.ciudad from sucursales s inner join empleado e on s.id = e.id_sucursal where e.nombre = 'Ricardo' and e.apellido = 'Martínez';
+
+-- 19.Devuelve un listado con los datos de los empleados que trabajan en la
+-- sucursal de Valencia. Ordena el resultado alfabéticamente.
+select e.id, e.cedula, e.nombre, e.apellido, e.celular, e.correo_electronico, e.ciudad_residencia from empleado e right join sucursales s on e.id_sucursal = s.id where s.id= 3 order by 3 asc;
+
+-- 20 Lista todos los datos de los empleados cuyo segundo apellido
+-- sea Martínez. Sin utilizar el operador IN.
+select * from empleado where apellido = 'Martínez';
+
+-- 21. Devuelve un listado donde sólo aparezcan aquellos empleados que no
+-- tienen ningúna sucursal asociado.
+select e.id, e.nombre from empleado e left join sucursales s on e.id_sucursal is null;
+
+-- 22. devuelve datos de empleado que no tengan correro electronico
+select * from empleado where correo_electronico is null;
+
+-- 23. buscar cliente que han alquilado un vehiculo con descuento
+select * from alquileres;
+select c.id, c.nombre from alquileres a inner join clientes c on c.id = a.id_cliente inner join descuento d on a.id_descuento = d.id ;
+
+-- 24 Listar clientes y sus alquileres con la fecha y el valor total
+select e.id, e.nombre, a.fecha_salida from empleado e inner join alquileres a on e.id = a.id_empleado;
+
+-- 25. Listar empleados y sus salarios junto con la sucursal en la que trabajan
+select e.id, e.nombre, s.ciudad from empleado e inner join sucursales s on e.id_sucursal = s.id;
