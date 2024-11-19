@@ -773,6 +773,61 @@ delimiter ;
 
 select mayus(modelo) from vehiculos;
 
--- 27 crea una función que calcule el porcentaje de vall
+-- 27 crea una función que calcule el porcentaje del valor cotizado
+select * from alquileres;
 delimiter //
-create function 
+create function val(valor_cotisado int)
+returns int
+deterministic
+begin
+	declare val int;
+    select sum(valor_cotisado) into val from vehiculos;
+    return val;
+end //
+delimiter ;
+
+select val(valor_cotisado) from alquileres;
+
+-- 28 crea una función que cuente cuántos clientes existen en el sistema
+delimiter //
+create function contar(id int)
+returns int
+deterministic
+begin
+	declare contar int;
+    select count(id) into contar from clientes;
+    return contar;
+end //
+delimiter ;
+
+select distinct contar(id) from clientes;
+
+-- 29 crea una función para calcular cual es el porcentaje entre el valor de alquiler semanal
+delimiter //
+create function por(valor_alquiler_semanal decimal(10,2))
+returns decimal(10,2)
+deterministic
+begin
+	declare por decimal(10,2);
+    select avg(valor_alquiler_semanal) into por from descuento;
+    return por;
+end //
+delimiter ;
+
+select por(valor_alquiler_semanal) from descuento;
+
+-- 30 crea una funcion para que se una la columna de  tipo_vehiculo con la de modelo
+select * from vehiculos;
+
+delimiter //
+create function uni(tipo_vehiculo varchar(20), modelo varchar(30))
+returns varchar (40)
+deterministic
+begin
+	declare uni varchar (40);
+    select concat(tipo_vehiculo,' ',modelo) into uni from vehiculos group by 1;
+    return uni;
+end //
+delimiter ;
+
+select uni(tipo_vehiculo, modelo) from vehiculos;
