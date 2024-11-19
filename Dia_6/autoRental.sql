@@ -685,7 +685,7 @@ select * from vehiculos;
 select id, placa, tipo_vehiculo from vehiculos where color = 'Rojo' and puertas > 2;
 
 -- 7 devuelve un listado de cuantos vehiculos tienen mas de dos puertas, su capacidad sea mayor a 2 y que tengan sunroof y se ordene de forma ascendente 
-select count(puertas) as mas_de_dos_puertas, capacidad, sfunroof from vehiculos where capacidad > 2 and sunroof = 'si' group by 2 having count(puertas) > 2 order by 1 asc;
+select count(puertas) as mas_de_dos_puertas, capacidad, sunroof from vehiculos where capacidad > 2 and sunroof = 'si' group by 2 having count(puertas) > 2 order by 1 asc;
 
 -- 8 devuelve un listado de todos los datos de los empleado que residen en medellin 
 select * from empleado;
@@ -758,3 +758,21 @@ select e.id, e.nombre, a.fecha_salida from empleado e inner join alquileres a on
 
 -- 25. Listar empleados y sus salarios junto con la sucursal en la que trabajan
 select e.id, e.nombre, s.ciudad from empleado e inner join sucursales s on e.id_sucursal = s.id;
+
+-- 26 crea una función que convierta el modelo en mayúscula
+delimiter //
+create function mayus(modelo varchar(30))
+returns varchar(30)
+deterministic
+begin
+	declare mayus varchar(30);
+    select upper(modelo) into mayus from vehiculos group by 1;
+    return mayus;
+end //
+delimiter ;
+
+select mayus(modelo) from vehiculos;
+
+-- 27 crea una función que calcule el porcentaje de vall
+delimiter //
+create function 
