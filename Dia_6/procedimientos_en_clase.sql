@@ -32,7 +32,7 @@ CREATE TABLE departments (
 );
 
 CREATE TABLE jobs (
-    job_id INT PRIMARY KEY,
+    job_id INT PRIMARY KEY auto_increment,
     job_title VARCHAR(50),
     min_salary DECIMAL(10, 2),
     max_salary DECIMAL(10, 2)
@@ -161,7 +161,19 @@ begin
 	insert into regions(region_name) values(nombre_region);
 end 
 // delimiter ;
-
 call insertarRegion("africa");
-
 select * from regions;
+select * from countries;
+delimiter //
+
+-- 1 inserta un nuevo trabajo
+delimiter //
+create procedure insertarTrabajo(in job_title varchar(50), min_salary decimal(10,2), max_salary decimal(10,2))
+begin
+	insert into jobs(job_title, min_salary, max_salary) values (nuevos);
+end// 
+delimiter ;
+
+call insertarTrabajo("product owner", "80000.00", "180000.00");
+
+-- 2. 
