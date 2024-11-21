@@ -883,6 +883,16 @@ call newVehic("JFY-23", "electrico", "mazda3", 4, 5, "si", "v8", "rojo");
 
 select * from vehiculos;
 
--- 5. crea un nuevo
+-- 5. crea un nuevo descuento
+delimiter //
+create procedure newDescu(in val_sem int, val_di int, por_des decimal(10,2), tot int)
+begin
+	insert into descuento(valor_alquiler_semanal, valor_alquiler_dia, porcentaje_descuento, total) values (val_sem, val_di, por_des, tot);
+end //
+delimiter ;
 
-
+call newDescu(200, 49, 0.049, 284);
+ 
+ select * from descuento;
+ 
+ -- 6 crea un nuevo
